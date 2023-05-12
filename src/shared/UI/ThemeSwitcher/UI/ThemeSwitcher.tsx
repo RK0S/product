@@ -16,7 +16,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = (props) => {
 
     return (
         <AppButton theme={ThemeButton.CLEAR} onClick={toggleTheme} className={classNames(cls.themeSwitcher, {}, [className])}>
-            <Brush />
+            <Brush width={30} height={30} />
         </AppButton>
     );
 }
