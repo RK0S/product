@@ -18,4 +18,4 @@ export const AppLink: React.FC<AppLinkProps> = (props) => {
             {children}
         </Link>
     );
-}
+};

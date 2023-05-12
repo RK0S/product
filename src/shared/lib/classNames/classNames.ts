@@ -7,5 +7,5 @@ export const classNames = (cls: string, mods: Mods = {}, additional: string[] = 
         ...Object.entries(mods)
             .filter(([classNames, flag]) => Boolean(flag))
             .map(([classNames]) => classNames)
-    ].join(' ')
-}
+    ].join(' ');
+};

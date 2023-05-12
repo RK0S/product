@@ -23,4 +23,4 @@ export const useTheme = (): UseThemeResult => {
         theme,
         toggleTheme,
     };
-}
+};

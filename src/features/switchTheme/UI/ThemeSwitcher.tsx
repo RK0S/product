@@ -5,7 +5,6 @@ import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
 
 import cls from './ThemeSwitcher.module.scss';
 
-
 interface ThemeSwitcherProps {
     className?: string;
 }
@@ -15,8 +14,12 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = (props) => {
     const { toggleTheme } = useTheme();
 
     return (
-        <AppButton theme={ThemeButton.CLEAR} onClick={toggleTheme} className={classNames(cls.themeSwitcher, {}, [className])}>
+        <AppButton 
+            theme={ThemeButton.CLEAR} 
+            onClick={toggleTheme} 
+            className={classNames(cls.themeSwitcher, {}, [className])}
+        >
             <Brush width={30} height={30} />
         </AppButton>
     );
-}
+};

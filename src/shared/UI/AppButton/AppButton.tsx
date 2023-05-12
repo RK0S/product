@@ -22,4 +22,4 @@ export const AppButton: React.FC<AppButtonProps> = (props) => {
             {children}
         </button>
     );
-}
+};
