@@ -1,0 +1,2 @@
+config/jest/jest.config.ts
+**/*.test.ts
