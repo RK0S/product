@@ -1,0 +1,12 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "indentation": [4],
+        "color-hex-length": "long",
+        "selector-class-pattern": null,
+        "no-missing-end-of-source-newline": null,
+        "string-quotes": "single",
+        "custom-property-empty-line-before": null,
+        "color-hex-case": "upper"
+    }
+}
