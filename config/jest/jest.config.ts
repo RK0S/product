@@ -1,3 +1,5 @@
+import path from "path";
+
 export default {
     // Настройка Jest на ts-jest
 
@@ -29,6 +31,16 @@ export default {
     ],
     moduleDirectories: [
         'node_modules',
+    ],
+    modulePaths: [
+        '<rootDir>src'
+    ],
+    moduleNameMapper: {
+        "\\.s?css$": "identity-obj-proxy",
+        "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx")
+    },
+    setupFilesAfterEnv: [
+        "<rootDir>/config/jest/setupTests.ts"
     ],
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',

@@ -9,7 +9,6 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:i18next/recommended'
     ],
-    overrides: [],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
@@ -37,11 +36,19 @@ module.exports = {
         'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
         'no-console': ['warn'],
-        'i18next/no-literal-string': ['warn', {markupOnly: true, ignoreAttribute: ['to']}]
+        'i18next/no-literal-string': ['warn', {markupOnly: true, ignoreAttribute: ['to', 'data-testid']}]
     },
     'settings': {
         'react': {
             'version': 'detect'
         }
-    }
+    },
+    'overrides': [
+        {
+            'files': ['**/src/**/*.test.{ts,tsx}'],
+            'rules': {
+                'i18next/no-literal-string': 'off'
+            }
+        }
+    ]
 };
