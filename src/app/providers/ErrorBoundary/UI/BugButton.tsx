@@ -14,6 +14,7 @@ export const BugButton = () => {
     const onThrow = () => setError(!error);
 
     return (
+        // eslint-disable-next-line i18next/no-literal-string
         <AppButton onClick={onThrow}>throw error</AppButton>
     );
 };
