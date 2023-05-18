@@ -1,4 +1,6 @@
+import { Theme } from 'app/providers/ThemeProvider';
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { PageError } from 'shared/UI/PageError/PageError';
 
 interface ErrorBoundaryProps {
@@ -30,9 +32,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
         if (hasError) {
             return (
-                <Suspense fallback=''>
-                    <PageError />
-                </Suspense>
+                <div className={classNames('app', {}, [Theme.LIGHT])}>
+                    <Suspense fallback=''>
+                        <PageError />
+                    </Suspense>
+                </div>
             );
         }
 

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
 
 interface LangSwitcherProps {
     className?: string;
@@ -18,7 +18,6 @@ export const LangSwitcher: React.FC<LangSwitcherProps> = (props) => {
     return (
         <AppButton
             className={classNames('', {}, [className])}
-            theme={ThemeButton.CLEAR}
             onClick={toggle}
         >
             {t('Language')}

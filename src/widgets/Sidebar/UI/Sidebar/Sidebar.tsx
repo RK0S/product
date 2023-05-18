@@ -3,6 +3,11 @@ import { useState } from 'react';
 import { ThemeSwitcher } from 'features/switchTheme';
 import { LangSwitcher } from 'features/switchLanguage';
 import { useTranslation } from 'react-i18next';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
+import { AppLink } from 'shared/UI/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import Home from 'shared/assets/icons/main_page.svg';
+import List from 'shared/assets/icons/about_page.svg';
 
 import cls from './Sidebar.module.scss';
 
@@ -25,7 +30,19 @@ export const Sidebar = (props: SidebarProps) => {
             className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}
             data-testid='sidebar'
         >
-            <button type='button' data-testid='sidebar_btn' onClick={onToggle}>{t('toggle')}</button>
+            <AppButton data-testid='sidebar_btn' onClick={onToggle} className={cls.collapsing_btn}>
+                {collapsed ? '>' : '<'}
+            </AppButton>
+            <div className={cls.links}>
+                <AppLink className={cls.link} to={RoutePath.main}>
+                    <Home fill='#1E2E29'/>
+                    <span>{t('Main')}</span>
+                </AppLink>
+                <AppLink className={cls.link} to={RoutePath.about}>
+                    <List fill='#1E2E29'/>
+                    <span>{t('About')}</span>
+                </AppLink>
+            </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang_switcher} />
