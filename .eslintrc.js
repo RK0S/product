@@ -36,7 +36,7 @@ module.exports = {
         'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
         'no-console': ['warn'],
-        'i18next/no-literal-string': ['warn', {markupOnly: true, ignoreAttribute: ['to', 'data-testid']}]
+        'i18next/no-literal-string': ['warn', {markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill']}]
     },
     'settings': {
         'react': {

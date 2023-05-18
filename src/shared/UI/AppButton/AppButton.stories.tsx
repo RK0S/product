@@ -18,12 +18,6 @@ Primary.args = {
     children: 'Text',
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-    children: 'Text',
-    theme: ThemeButton.CLEAR
-};
-
 export const Outlined = Template.bind({});
 Outlined.args = {
     children: 'Text',
