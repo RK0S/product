@@ -1,7 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './PageError.module.scss';
 import { useTranslation } from 'react-i18next';
-import { AppButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+
+import cls from './PageError.module.scss';
 
 export const PageError = () => {
     const { t } = useTranslation();
@@ -12,8 +13,8 @@ export const PageError = () => {
 
     return (
         <div className={classNames(cls.pageError, {}, [])}>
-            <p>{t('Something went wrong')}</p>
-            <AppButton onClick={reloadPage}>{t('Reload page')}</AppButton>
+            <p className={cls.descr}>{t('Something went wrong')}</p>
+            <AppButton theme={ThemeButton.OUTLINED} onClick={reloadPage}>{t('Reload page')}</AppButton>
         </div>
     );
 };
