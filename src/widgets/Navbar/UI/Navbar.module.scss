@@ -1,6 +1,8 @@
 .navbar {
+    grid-area: navbar;
     width: 100%;
     height: var(--navbar-height);
+    height: 60px;
     display: flex;
     align-items: center;
     padding: 20px;

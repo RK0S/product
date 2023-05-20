@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'shared/lib/useTheme/useTheme';
-import Brush from 'shared/assets/icons/brush.svg';
+import Theme from 'shared/assets/icons/theme.svg';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 
 import cls from './ThemeSwitcher.module.scss';
@@ -18,7 +18,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = (props) => {
             onClick={toggleTheme} 
             className={classNames(cls.themeSwitcher, {}, [className])}
         >
-            <Brush width={30} height={30} />
+            <Theme fill='#FDFDFD' width={30} height={30} />
         </AppButton>
     );
 };

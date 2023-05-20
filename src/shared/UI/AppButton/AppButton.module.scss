@@ -1,11 +1,25 @@
 .appButton {
     cursor: pointer;
     background: none;
+    color: var(--main-font-color);
+    font: var(--font-s);
 }
 
 .outlined {
-    padding: 10px;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background: none;
+    padding: 8px 35px;
+    border-radius: 7px;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+    background: var(--bg-color);
+}
+
+.filled {
+    padding: 8px 35px;
+    border-radius: 7px;
+    background: var(--button-color);
+    color: var(--bg-color);
+}
+
+.white {
+    color: #FDFDFD;
 }

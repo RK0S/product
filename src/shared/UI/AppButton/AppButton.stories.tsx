@@ -2,6 +2,8 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { AppButton, ThemeButton } from './AppButton';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
 
 export default {
     title: 'shared/AppButton',
@@ -23,3 +25,16 @@ Outlined.args = {
     children: 'Text',
     theme: ThemeButton.OUTLINED
 };
+
+export const Filled = Template.bind({});
+Filled.args = {
+    children: 'Text',
+    theme: ThemeButton.FILLED
+};
+
+export const White = Template.bind({});
+White.args = {
+    children: 'Text',
+    theme: ThemeButton.WHITE
+};
+White.decorators= [ThemeDecorator(Theme.DARK)];

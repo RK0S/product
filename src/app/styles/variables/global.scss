@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap');
 
 :root {
-    --font-family-main: 'Open Sans', sans-serif;
+    --font-family-main: 'Inter', sans-serif;
+
+    --font-size-xs: 12px;
+    --font-line-xs: 20px;
+    --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+
+    --font-size-s: 14px;
+    --font-line-s: 22px;
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
 
     --font-size-m: 16px;
     --font-line-m: 24px;
@@ -13,5 +21,6 @@
 
     // Размеры
 
-    --navbar-height: 50px;
+    --sidebar-width: 250px;
+    --sidebar-width-collapsed: 50px;
 }
