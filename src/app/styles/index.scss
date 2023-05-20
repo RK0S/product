@@ -6,15 +6,21 @@
 .app {
     font: var(--font-m);
     background: var(--bg-color);
-    color: var(--primary-color);
+    color: var(--main-font-color);
     min-height: 100vh;
 }
 
 .content-page {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+        'sidebar navbar'
+        'sidebar content';
+    grid-template-columns: max-content auto;
+    /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+    grid-template-rows: 60px auto;
 }
 
 .page-wrapper {
-    flex-grow: 1;
-    padding: 20px;
+    grid-area: content;
+    padding: 20px 80px;
 }
