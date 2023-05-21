@@ -12,9 +12,9 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
+        sourceType: 'module'
     },
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -36,17 +36,22 @@ module.exports = {
         'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
         'no-console': ['warn'],
-        'i18next/no-literal-string': ['warn', {markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill']}]
+        'i18next/no-literal-string': [
+            'warn',
+            { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill'] }
+        ],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error'
     },
-    'settings': {
-        'react': {
-            'version': 'detect'
+    settings: {
+        react: {
+            version: 'detect'
         }
     },
-    'overrides': [
+    overrides: [
         {
-            'files': ['**/src/**/*.test.{ts,tsx}'],
-            'rules': {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
                 'i18next/no-literal-string': 'off'
             }
         }
