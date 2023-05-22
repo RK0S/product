@@ -46,4 +46,7 @@ export default {
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
     rootDir: '../../',
+    globals: {
+        '__IS_DEV__': true
+    }
 };
