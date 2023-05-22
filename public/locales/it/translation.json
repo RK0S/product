@@ -6,5 +6,7 @@
   "Main": "Home",
   "About": "Chi siamo",
   "Language-short": "IT",
-  "Log in": "Login"
+  "Log in": "Login",
+  "Password": "Parola d’ordine",
+  "Username": "Nome utente"
 }
