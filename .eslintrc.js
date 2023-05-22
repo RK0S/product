@@ -41,7 +41,8 @@ module.exports = {
             { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill'] }
         ],
         'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'error'
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/display-name': 'off'
     },
     settings: {
         react: {

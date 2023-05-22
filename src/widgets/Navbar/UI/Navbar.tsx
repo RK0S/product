@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
-import { Modal } from 'shared/UI/Modal/Modal';
 import { useTranslation } from 'react-i18next';
 
 import cls from './Navbar.module.scss';
+import { LoginModal } from 'features/authByUsername';
 
 interface NavbarProps {
     className?: string;
@@ -26,7 +26,7 @@ export const Navbar = ({ className }: NavbarProps) => {
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
             <AppButton onClick={onOpen} theme={ThemeButton.OUTLINED}>{t('Log in')}</AppButton>
-            <Modal onClose={onClose} isOpened={isOpened}><p>FGHFGHFGHFGH</p></Modal>
+            <LoginModal onClose={onClose} isOpened={isOpened} />
         </div>
     );
 };
