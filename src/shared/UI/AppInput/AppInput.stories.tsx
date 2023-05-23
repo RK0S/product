@@ -43,9 +43,9 @@ DarkWithValue.args = {
 };
 DarkWithValue.decorators= [ThemeDecorator(Theme.DARK)];
 
-export const DarkWithValueOnFocus = Template.bind({});
-DarkWithValueOnFocus.args = {
-    value: 'Text',
-    autofocus: true
-};
-DarkWithValueOnFocus.decorators= [ThemeDecorator(Theme.DARK)];
+// export const DarkWithValueOnFocus = Template.bind({});
+// DarkWithValueOnFocus.args = {
+//     value: 'Text',
+//     autofocus: true
+// };
+// DarkWithValueOnFocus.decorators= [ThemeDecorator(Theme.DARK)];
