@@ -25,12 +25,6 @@ WithValue.args = {
     value: 'Text'
 };
 
-export const WithValueOnFocus = Template.bind({});
-WithValueOnFocus.args = {
-    value: 'Text',
-    autofocus: true
-};
-
 export const Dark = Template.bind({});
 Dark.args = {
     placeholder: 'Text'
@@ -42,10 +36,3 @@ DarkWithValue.args = {
     value: 'Text'
 };
 DarkWithValue.decorators= [ThemeDecorator(Theme.DARK)];
-
-export const DarkWithValueOnFocus = Template.bind({});
-DarkWithValueOnFocus.args = {
-    value: 'Text',
-    autofocus: true
-};
-DarkWithValueOnFocus.decorators= [ThemeDecorator(Theme.DARK)];
