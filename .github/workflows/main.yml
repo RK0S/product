@@ -2,9 +2,9 @@ name: linting, testing, building
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
-    branches: [ master]
+    branches: [ master ]
   pull_request:
-    branches: [ master]
+    branches: [ master ]
 jobs:
   pipeline:
     runs-on: windows-2019
@@ -31,9 +31,6 @@ jobs:
         if: always()
       - name: unit testing
         run: npm run test:unit
-        if: always()
-      - name: build storybook
-        run: npm run storybook:build
         if: always()
       - name: screenshot testing 
         run: npm run test:ui:ci

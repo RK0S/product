@@ -18,6 +18,6 @@ const Template: ComponentStory<typeof LoginForm> = () => <LoginForm/>;
 export const Light = Template.bind({});
 Light.args = {};
 
-// export const Dark = Template.bind({});
-// Dark.args = {};
-// Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const Dark = Template.bind({});
+Dark.args = {};
+Dark.decorators = [ThemeDecorator(Theme.DARK)];
