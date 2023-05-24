@@ -39,4 +39,14 @@ jobs:
       - name: Save screenshots as artifacts
         uses: actions/upload-artifact@v2
         with:
+          name: build-files
           path: .loki/difference/
+  deploy-art:
+    needs: pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files    
