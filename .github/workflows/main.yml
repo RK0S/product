@@ -6,27 +6,7 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  install-npm:
-    runs-on: windows-2019
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: install modules
-        run: npm install
   unit-testing:
-    needs: [install-npm]
     runs-on: windows-2019
     strategy:
       matrix:
@@ -48,7 +28,6 @@ jobs:
       - name: unit testing
         run: npm run test:unit
   linting:
-    needs: [install-npm]
     runs-on: windows-2019
     strategy:
       matrix:
@@ -74,7 +53,6 @@ jobs:
         run: npm run lint:scss
         if: always()
   screenshots-testing:
-    needs: [install-npm]
     runs-on: windows-2019
     strategy:
       matrix:
