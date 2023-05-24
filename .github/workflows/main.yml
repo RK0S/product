@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 jobs:
   install-npm:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -27,7 +27,7 @@ jobs:
         run: npm install
   unit-testing:
     needs: [install-npm]
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -49,7 +49,7 @@ jobs:
         run: npm run test:unit
   linting:
     needs: [install-npm]
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -75,7 +75,7 @@ jobs:
         if: always()
   screenshots-testing:
     needs: [install-npm]
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -97,7 +97,7 @@ jobs:
         run: npm run test:ui:ci
   building:
     needs: [unit-testing, linting, screenshots-testing]
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [ 18.x ]
