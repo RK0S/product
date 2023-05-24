@@ -2,11 +2,11 @@ name: linting, testing, building
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
-    branches: [ master ]
+    branches: [ master]
   pull_request:
-    branches: [ master ]
+    branches: [ master]
 jobs:
-  unit-testing:
+  pipeline:
     runs-on: windows-2019
     strategy:
       matrix:
@@ -18,80 +18,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: install modules
         run: npm install
-      - name: unit testing
-        run: npm run test:unit
-  linting:
-    runs-on: windows-2019
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: install modules
-        run: npm install
+      - name: build production project
+        run: npm run build:prod
+        if: always()
       - name: linting typescript
         run: npm run lint:ts
         if: always()
       - name: linting scss
         run: npm run lint:scss
         if: always()
-  screenshots-testing:
-    runs-on: windows-2019
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: install modules
-        run: npm install
+      - name: unit testing
+        run: npm run test:unit
+        if: always()
+      - name: build storybook
+        run: npm run storybook:build
+        if: always()
       - name: screenshot testing 
         run: npm run test:ui:ci
-  building:
-    needs: [unit-testing, linting, screenshots-testing]
-    runs-on: windows-2019
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: install modules
-        run: npm install
-      - name: build production project
-        run: npm run build:prod
+        if: always()
