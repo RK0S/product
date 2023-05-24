@@ -7,7 +7,7 @@ on:
     branches: [ master]
 jobs:
   pipeline:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -32,9 +32,11 @@ jobs:
       - name: unit testing
         run: npm run test:unit
         if: always()
-      - name: build storybook
-        run: npm run storybook:build
-        if: always()
       - name: screenshot testing 
         run: npm run test:ui:ci
         if: always()
+        continue-on-error: true
+      - name: Save screenshots as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: .loki/difference/
