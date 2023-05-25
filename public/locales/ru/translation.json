@@ -8,5 +8,6 @@
   "Language-short": "РУ",
   "Log in": "Войти",
   "Password": "Пароль",
-  "Username": "Имя пользователя"
+  "Username": "Имя пользователя",
+  "Incorrect username or password": "Неверный логин или пароль"
 }

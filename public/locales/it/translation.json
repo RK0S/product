@@ -8,5 +8,6 @@
   "Language-short": "IT",
   "Log in": "Login",
   "Password": "Parola d’ordine",
-  "Username": "Nome utente"
+  "Username": "Nome utente",
+  "Incorrect username or password": "Nome utente o parola d'ordine errati"
 }
