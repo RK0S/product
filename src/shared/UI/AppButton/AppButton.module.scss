@@ -3,6 +3,7 @@
     background: none;
     color: var(--main-font-color);
     font: var(--font-s);
+    transition: opacity 0.3s;
 }
 
 .outlined {
@@ -22,4 +23,8 @@
 
 .white {
     color: #FDFDFD;
+}
+
+.appButton:disabled {
+    opacity: 0.5;
 }

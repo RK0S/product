@@ -1,14 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserSchema } from '../types/user';
+import { UserSchema } from '../types/User';
 
 const initialState: UserSchema = {};
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
-        
-    }
+    reducers: {}
 });
 
 export const { actions: userActions } = userSlice;

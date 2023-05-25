@@ -38,3 +38,10 @@ White.args = {
     theme: ThemeButton.WHITE
 };
 White.decorators= [ThemeDecorator(Theme.DARK)];
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINED,
+    disabled: true
+};
