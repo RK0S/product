@@ -10,7 +10,6 @@ import Home from 'shared/assets/icons/main_page.svg';
 import List from 'shared/assets/icons/about_page.svg';
 
 import cls from './Sidebar.module.scss';
-import { LoginModal } from 'features/authByUsername';
 
 interface SidebarProps {
     className?: string;
