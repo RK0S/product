@@ -1,6 +1,6 @@
 import { ReducersMapObject } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { StateSchema } from './StateSchema';
+import { StateSchema } from './stateSchema';
 import { userReducer } from 'entities/User';
 import { loginReducer } from 'features/authByUsername';
 
