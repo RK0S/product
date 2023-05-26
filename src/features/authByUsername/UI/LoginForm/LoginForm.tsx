@@ -11,7 +11,6 @@ import { Text, TextTheme } from 'shared/UI/Text/Text';
 
 import cls from './LoginForm.module.scss';
 
-
 interface LoginFormProps {
     className?: string;
 }
@@ -19,7 +18,7 @@ interface LoginFormProps {
 export const LoginForm = (props: LoginFormProps) => {
     const { className } = props;
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('loginForm');
     const dispatch = useDispatch();
     const { username, password, error, isLoading } = useSelector(getLoginState);
 
@@ -37,12 +36,9 @@ export const LoginForm = (props: LoginFormProps) => {
         [dispatch]
     );
 
-    const onLoginClick = useCallback(
-        () => {
-            dispatch(loginByUsername({username, password}));
-        },
-        [dispatch, username, password]
-    );
+    const onLoginClick = useCallback(() => {
+        dispatch(loginByUsername({ username, password }));
+    }, [dispatch, username, password]);
 
     return (
         <div className={classNames(cls.loginForm, {}, [className])}>
@@ -59,9 +55,20 @@ export const LoginForm = (props: LoginFormProps) => {
                 onChange={onChangePassword}
                 value={password}
             />
-            {error && <Text text={error} theme={TextTheme.ERROR} className={cls.error_message} />}
-            <AppButton disabled={isLoading} onClick={onLoginClick} className={cls.btn} theme={ThemeButton.FILLED}>
-                {t('Log in')}
+            {error && (
+                <Text
+                    text={t('Incorrect username or password')}
+                    theme={TextTheme.ERROR}
+                    className={cls.error_message}
+                />
+            )}
+            <AppButton
+                disabled={isLoading}
+                onClick={onLoginClick}
+                className={cls.btn}
+                theme={ThemeButton.FILLED}
+            >
+                {t('Log in', { ns: 'translation'})}
             </AppButton>
         </div>
     );

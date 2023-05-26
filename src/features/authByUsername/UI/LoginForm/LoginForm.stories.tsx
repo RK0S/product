@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LoginForm } from './LoginForm';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'features/authByUserName',
@@ -15,11 +16,44 @@ export default {
 
 const Template: ComponentStory<typeof LoginForm> = () => <LoginForm/>;
 
-export const Light = Template.bind({});
-Light.args = {};
+export const Primary = Template.bind({});
+Primary.args = {};
+Primary.decorators = [StoreDecorator({
+    loginForm: {username: 'user', password: 'password'}
+})];
+
+export const WithError = Template.bind({});
+WithError.args = {};
+WithError.decorators = [StoreDecorator({
+    loginForm: {username: 'user', password: 'password', error: 'ERROR'}
+})];
+
+export const Loading = Template.bind({});
+Loading.args = {};
+Loading.decorators = [StoreDecorator({
+    loginForm: {isLoading: true}
+})];
 
 export const Dark = Template.bind({});
 Dark.args = {
     loki: { skip: true },
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    loginForm: {username: 'user', password: 'password'}
+})];
+
+export const DarkWithError = Template.bind({});
+DarkWithError.args = {
+    loki: { skip: true },
+};
+DarkWithError.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    loginForm: {username: 'user', password: 'password', error: 'ERROR'}
+})];
+
+export const DarkLoading = Template.bind({});
+DarkLoading.args = {
+    loki: { skip: true },
+};
+DarkLoading.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    loginForm: {isLoading: true}
+})];

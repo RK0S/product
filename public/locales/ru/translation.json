@@ -7,7 +7,5 @@
   "Main": "Главная",
   "Language-short": "РУ",
   "Log in": "Войти",
-  "Password": "Пароль",
-  "Username": "Имя пользователя",
-  "Incorrect username or password": "Неверный логин или пароль"
+  "Log out": "Выйти"
 }
