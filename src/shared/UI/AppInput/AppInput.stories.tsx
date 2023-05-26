@@ -47,6 +47,5 @@ export const DarkWithValueOnFocus = Template.bind({});
 DarkWithValueOnFocus.args = {
     value: 'Text',
     autofocus: true,
-    loki: { skip: true },
 };
 DarkWithValueOnFocus.decorators= [ThemeDecorator(Theme.DARK)];

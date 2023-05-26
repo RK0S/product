@@ -35,25 +35,19 @@ Loading.decorators = [StoreDecorator({
 })];
 
 export const Dark = Template.bind({});
-Dark.args = {
-    loki: { skip: true },
-};
+Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     loginForm: {username: 'user', password: 'password'}
 })];
 
 export const DarkWithError = Template.bind({});
-DarkWithError.args = {
-    loki: { skip: true },
-};
+DarkWithError.args = {};
 DarkWithError.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     loginForm: {username: 'user', password: 'password', error: 'ERROR'}
 })];
 
 export const DarkLoading = Template.bind({});
-DarkLoading.args = {
-    loki: { skip: true },
-};
+DarkLoading.args = {};
 DarkLoading.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     loginForm: {isLoading: true}
 })];
