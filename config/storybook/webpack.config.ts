@@ -11,7 +11,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
         html: '',
         src: path.resolve(__dirname, '..', '..', 'src')
     };
-    config.resolve?.modules?.push(path.relative(__dirname, '../../src'), 'node_modules');
+    config.resolve?.modules?.push(paths.src, 'node_modules');
     config.resolve?.extensions?.push('.ts', '.tsx');
 
     if (config.module?.rules) {
