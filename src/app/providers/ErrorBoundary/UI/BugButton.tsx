@@ -1,5 +1,5 @@
 
-import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { useState, useEffect } from 'react';
 
 export const BugButton = () => {
@@ -15,6 +15,6 @@ export const BugButton = () => {
 
     return (
         // eslint-disable-next-line i18next/no-literal-string
-        <AppButton theme={ThemeButton.OUTLINED} onClick={onThrow}>throw error</AppButton>
+        <AppButton theme={'outlined'} onClick={onThrow}>throw error</AppButton>
     );
 };

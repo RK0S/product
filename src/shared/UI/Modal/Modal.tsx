@@ -18,7 +18,6 @@ interface KeyboardEvent {
 
 export const Modal: React.FC<ModalProps> = (props) => {
     const { children, onClose, isOpened, className } = props;
-
     const isMounted = useMount({ isOpened });
 
     const onKeyDown = useCallback((e: KeyboardEvent): void => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AppButton, ThemeButton } from './AppButton';
+import { AppButton } from './AppButton';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
@@ -23,25 +23,25 @@ Primary.args = {
 export const Outlined = Template.bind({});
 Outlined.args = {
     children: 'Text',
-    theme: ThemeButton.OUTLINED
+    theme: 'outlined'
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
     children: 'Text',
-    theme: ThemeButton.FILLED
+    theme: 'filled'
 };
 
 export const White = Template.bind({});
 White.args = {
     children: 'Text',
-    theme: ThemeButton.WHITE
+    theme: 'white'
 };
 White.decorators= [ThemeDecorator(Theme.DARK)];
 
 export const Disabled = Template.bind({});
 Disabled.args = {
     children: 'Text',
-    theme: ThemeButton.OUTLINED,
+    theme: 'outlined',
     disabled: true
 };

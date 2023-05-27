@@ -6,6 +6,7 @@ import { AppRouter } from './providers/router';
 import { Sidebar } from 'widgets/Sidebar';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
 import './styles/index.scss';
 
@@ -14,7 +15,10 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(userActions.initAuthData());
+        const user = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
+        if (user) {
+            dispatch(userActions.initAuthData(user));
+        }
     }, [dispatch]);
 
     return (
