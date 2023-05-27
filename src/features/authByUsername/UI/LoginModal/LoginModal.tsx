@@ -1,8 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/UI/Modal/Modal';
 import { LoginForm } from '../LoginForm/LoginForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../.././model/slice/loginSlice';
+import { useCallback } from 'react';
+import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
 
 interface LoginModalProps {
     className?: string;
@@ -12,13 +14,16 @@ interface LoginModalProps {
 
 export const LoginModal = (props: LoginModalProps) => {
     const { className, isOpened, onClose } = props;
+    const { error } = useSelector(getLoginState);
 
     const dispatch = useDispatch();
 
-    const onCloseWithClean = () => {
+    const onCloseWithClean = useCallback(() => {
         onClose();
-        dispatch(loginActions.cleanErrorMessage());
-    };
+        if (error) {
+            dispatch(loginActions.cleanErrorMessage());
+        }
+    }, [onClose, dispatch, error]);
 
     return (
         <Modal isOpened={isOpened} onClose={onCloseWithClean} className={classNames('', {}, [className])}>

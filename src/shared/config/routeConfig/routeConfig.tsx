@@ -3,11 +3,13 @@ import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 
-export enum AppRoutes {
-    MAIN = 'main',
-    ABOUT = 'about',
-    NOT_FOUND = 'not_found'
-}
+const AppRoutes = {
+    MAIN: 'main',
+    ABOUT: 'about',
+    NOT_FOUND: 'not_found'
+} as const;
+
+type AppRoutes = typeof AppRoutes[keyof typeof AppRoutes];
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',

@@ -9,7 +9,7 @@ i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: 'ru', //TODO: Оптимизировать чанки в фолбэк
+        fallbackLng: 'ru',
         debug: __IS_DEV__,
 
         interpolation: {

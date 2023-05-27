@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { toggleLang } from '../lib/toggleLang/toggleLang';
 
 import cls from './LangSwitcher.module.scss';
@@ -20,7 +20,7 @@ export const LangSwitcher: React.FC<LangSwitcherProps> = props => {
     };
 
     return (
-        <AppButton theme={ThemeButton.WHITE} className={classNames(cls.langSwitcher, {}, [className])} onClick={toggle}>
+        <AppButton theme={'white'} className={classNames(cls.langSwitcher, {}, [className])} onClick={toggle}>
             {isCollapsed ? t('Language-short') : t('Language')}
         </AppButton>
     );

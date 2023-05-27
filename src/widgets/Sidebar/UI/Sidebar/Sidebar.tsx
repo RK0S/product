@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ThemeSwitcher } from 'features/switchTheme';
 import { LangSwitcher } from 'features/switchLanguage';
 import { useTranslation } from 'react-i18next';
-import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppLink } from 'shared/UI/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import Home from 'shared/assets/icons/main_page.svg';
@@ -33,7 +33,7 @@ export const Sidebar = (props: SidebarProps) => {
             <AppButton
                 data-testid='sidebar_btn'
                 onClick={onToggle}
-                theme={ThemeButton.WHITE}
+                theme={'white'}
                 className={cls.collapsing_btn}
             >
                 {collapsed ? '>' : '<'}

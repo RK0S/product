@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { AppButton, ThemeButton } from 'shared/UI/AppButton/AppButton';
+import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from './../../model/slice/loginSlice';
 import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
-import { Text, TextTheme } from 'shared/UI/Text/Text';
+import { Text } from 'shared/UI/Text/Text';
 
 import cls from './LoginForm.module.scss';
 
@@ -58,7 +58,7 @@ export const LoginForm = (props: LoginFormProps) => {
             {error && (
                 <Text
                     text={t('Incorrect username or password')}
-                    theme={TextTheme.ERROR}
+                    theme={'error'}
                     className={cls.error_message}
                 />
             )}
@@ -66,7 +66,7 @@ export const LoginForm = (props: LoginFormProps) => {
                 disabled={isLoading}
                 onClick={onLoginClick}
                 className={cls.btn}
-                theme={ThemeButton.FILLED}
+                theme={'filled'}
             >
                 {t('Log in', { ns: 'translation'})}
             </AppButton>

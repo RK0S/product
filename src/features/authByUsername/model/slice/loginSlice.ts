@@ -22,6 +22,11 @@ export const loginSlice = createSlice({
 
         cleanErrorMessage: (state) => {
             state.error = null;
+        },
+
+        cleanData: (state) => {
+            state.password = '';
+            state.username = '';
         }
     },
     extraReducers: (builder) => {
