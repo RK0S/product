@@ -1,10 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/UI/Modal/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../.././model/slice/loginSlice';
-import { useCallback } from 'react';
-import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
+import { Suspense, useCallback } from 'react';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
+import { Loader } from 'shared/UI/Loader/Loader';
+import { getLoginError } from './../../model/selectors/getLoginError/getLoginError';
 
 interface LoginModalProps {
     className?: string;
@@ -14,7 +15,7 @@ interface LoginModalProps {
 
 export const LoginModal = (props: LoginModalProps) => {
     const { className, isOpened, onClose } = props;
-    const { error } = useSelector(getLoginState);
+    const error = useSelector(getLoginError);
 
     const dispatch = useDispatch();
 
@@ -27,7 +28,9 @@ export const LoginModal = (props: LoginModalProps) => {
 
     return (
         <Modal isOpened={isOpened} onClose={onCloseWithClean} className={classNames('', {}, [className])}>
-            <LoginForm />
+            <Suspense fallback={<Loader />}>
+                <LoginFormAsync />
+            </Suspense>
         </Modal>
     );
 };

@@ -4,23 +4,36 @@ import { useTranslation } from 'react-i18next';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from './../../model/slice/loginSlice';
-import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
+import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/UI/Text/Text';
+import { getLoginUsername } from './../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from './../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginIsLoading } from './../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from './../../model/selectors/getLoginError/getLoginError';
+import { ReducersList, useDynamicModuleLoader } from 'shared/lib/useDynamicModuleLoader/useDynamicModuleLoader';
 
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm = (props: LoginFormProps) => {
+const initialReducers: ReducersList = {
+    loginForm: loginReducer
+};
+
+const LoginForm = (props: LoginFormProps) => {
     const { className } = props;
 
     const { t } = useTranslation('loginForm');
     const dispatch = useDispatch();
-    const { username, password, error, isLoading } = useSelector(getLoginState);
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
+
+    useDynamicModuleLoader(initialReducers, true);
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -73,3 +86,5 @@ export const LoginForm = (props: LoginFormProps) => {
         </div>
     );
 };
+
+export default LoginForm;
