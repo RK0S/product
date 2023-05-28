@@ -1,26 +1,45 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from './../../model/slice/loginSlice';
-import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/UI/Text/Text';
+import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
+import { getLoginUsername } from './../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from './../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginIsLoading } from './../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from './../../model/selectors/getLoginError/getLoginError';
 
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm = (props: LoginFormProps) => {
+const LoginForm = (props: LoginFormProps) => {
     const { className } = props;
 
     const { t } = useTranslation('loginForm');
     const dispatch = useDispatch();
-    const { username, password, error, isLoading } = useSelector(getLoginState);
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
+    const store = useStore() as ReduxStoreWithManager;
+
+    useEffect(() => {
+        store.reducerManager.add('loginForm', loginReducer);
+        dispatch({type: '@INIT loginform reducer'});
+        
+        return () => {
+            store.reducerManager.remove('loginForm');
+            dispatch({type: '@DESTROY loginform reducer'});
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -73,3 +92,5 @@ export const LoginForm = (props: LoginFormProps) => {
         </div>
     );
 };
+
+export default LoginForm;
