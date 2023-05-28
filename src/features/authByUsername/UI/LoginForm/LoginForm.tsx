@@ -1,23 +1,27 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/UI/Text/Text';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { getLoginUsername } from './../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from './../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from './../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from './../../model/selectors/getLoginError/getLoginError';
+import { ReducersList, useDynamicModuleLoader } from 'shared/lib/useDynamicModuleLoader/useDynamicModuleLoader';
 
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
 }
+
+const initialReducers: ReducersList = {
+    loginForm: loginReducer
+};
 
 const LoginForm = (props: LoginFormProps) => {
     const { className } = props;
@@ -28,18 +32,8 @@ const LoginForm = (props: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
-    const store = useStore() as ReduxStoreWithManager;
 
-    useEffect(() => {
-        store.reducerManager.add('loginForm', loginReducer);
-        dispatch({type: '@INIT loginform reducer'});
-        
-        return () => {
-            store.reducerManager.remove('loginForm');
-            dispatch({type: '@DESTROY loginform reducer'});
-        };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    useDynamicModuleLoader(initialReducers, true);
 
     const onChangeUsername = useCallback(
         (value: string) => {
