@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTheme } from 'shared/lib/useTheme/useTheme';
+import { useTheme } from 'shared/lib/hooks/useTheme/useTheme';
 import Theme from 'shared/assets/icons/theme.svg';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 
