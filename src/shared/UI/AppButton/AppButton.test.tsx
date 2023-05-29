@@ -10,6 +10,5 @@ describe('AppButton', () => {
     test('add theme', () => {
         render(<AppButton theme={'outlined'}>Test</AppButton>);
         expect(screen.getByText('Test')).toHaveClass('outlined');
-        screen.debug();
     });
 });
