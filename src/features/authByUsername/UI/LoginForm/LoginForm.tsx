@@ -7,10 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/UI/Text/Text';
-import { getLoginUsername } from './../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from './../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginIsLoading } from './../../model/selectors/getLoginIsLoading/getLoginIsLoading';
-import { getLoginError } from './../../model/selectors/getLoginError/getLoginError';
+import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
 import { ReducersList, useDynamicModuleLoader } from 'shared/lib/useDynamicModuleLoader/useDynamicModuleLoader';
 
 import cls from './LoginForm.module.scss';
@@ -28,10 +25,7 @@ const LoginForm = (props: LoginFormProps) => {
 
     const { t } = useTranslation('loginForm');
     const dispatch = useDispatch();
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
-    const isLoading = useSelector(getLoginIsLoading);
-    const error = useSelector(getLoginError);
+    const { isLoading, password, username, error} = useSelector(getLoginState);
 
     useDynamicModuleLoader(initialReducers, true);
 
