@@ -25,19 +25,6 @@
     flex-direction: column;
 }
 
-.link {
-    display: flex;
-    align-items: center;
-
-    span {
-        margin-left: 7px;
-    }
-}
-
-.link:not(:last-child) {
-    margin-bottom: 7px;
-}
-
 .switchers {
     position: absolute;
     bottom: 20px;

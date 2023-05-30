@@ -2,11 +2,13 @@ import { CombinedState, EnhancedStore } from '@reduxjs/toolkit';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/authByUsername';
 import { AnyAction, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { ProfileSchema } from 'entities/Profile';
 
 export interface StateSchema {
     user: UserSchema;
 
     //Асинхронные редюсеры
+    profile?: ProfileSchema;
     loginForm?: LoginSchema;
 }
 

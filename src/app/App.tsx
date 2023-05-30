@@ -4,16 +4,17 @@ import { useTheme } from 'shared/lib/hooks/useTheme/useTheme';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router';
 import { Sidebar } from 'widgets/Sidebar';
-import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import './styles/index.scss';
 
+
 const App = () => {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
-
+    const dispatch = useAppDispatch();
+    
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
         if (user) {

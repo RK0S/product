@@ -1,11 +1,12 @@
 {
-  "Main page": "Главная страница",
-  "Language": "Русский",
-  "Something went wrong": "Произошла непредвиденная ошибка",
-  "Reload page": "Перезагрузить страницу",
-  "About": "О сайте",
-  "Main": "Главная",
-  "Language-short": "РУ",
-  "Log in": "Войти",
-  "Log out": "Выйти"
+    "Main page": "Главная страница",
+    "Language": "Русский",
+    "Something went wrong": "Произошла непредвиденная ошибка",
+    "Reload page": "Перезагрузить страницу",
+    "About": "О сайте",
+    "Main": "Главная",
+    "Profile": "Профиль",
+    "Language-short": "РУ",
+    "Log in": "Войти",
+    "Log out": "Выйти"
 }
