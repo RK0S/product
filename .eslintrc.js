@@ -46,6 +46,10 @@ module.exports = {
         'react/display-name': 'off',
         'linebreak-style': 0,
     },
+    globals: {
+        __IS_DEV__: true,
+        __API__: true
+    },
     settings: {
         react: {
             version: 'detect'
