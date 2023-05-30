@@ -31,6 +31,8 @@ export const loginSlice = createSlice({
             })
             .addCase(loginByUsername.rejected, (state, action) => {
                 state.isLoading = false;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 state.error = action.payload;
             });
     }

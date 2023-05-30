@@ -16,8 +16,8 @@ export function buildPlugins({ paths, isDev, analyze, apiUrl }: BuildOptions): w
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: isDev,
-            __API__: apiUrl
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl)
         }),
         ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
         new BundleAnalyzerPlugin({

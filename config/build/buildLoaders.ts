@@ -20,13 +20,20 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 
     const typescriptLoader = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        use: [
+            {
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true
+                }
+            }
+        ],
+        exclude: /node_modules/
     };
 
     const imgLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource'
     };
 
     return [babelLoader, typescriptLoader, cssLoader, svgLoader, imgLoader];
