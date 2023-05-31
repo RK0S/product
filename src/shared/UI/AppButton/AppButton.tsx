@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppButton.module.scss';
 
-type ThemeButton = 'outlined' | 'filled' | 'white'
+type ThemeButton = 'outlined' | 'filled' | 'white' | 'primary'
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -11,7 +11,7 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const AppButton: React.FC<AppButtonProps> = memo((props) => {
-    const { className, children, theme = 'white', disabled, ...otherProps } = props;
+    const { className, children, theme = 'primary', disabled, ...otherProps } = props;
 
     return (
         <button 
