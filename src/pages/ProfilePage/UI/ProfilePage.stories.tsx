@@ -19,11 +19,17 @@ const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage/>;
 export const Light = Template.bind({});
 Light.args = {};
 Light.decorators = [StoreDecorator({
-    profile: {}
+    profile: {
+        isLoading: false,
+        readonly: true
+    }
 })];
 
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    profile: {}
+    profile: {
+        isLoading: false,
+        readonly: true
+    }
 })];

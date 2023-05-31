@@ -25,7 +25,7 @@ Primary.decorators = [StoreDecorator({
 export const notAuth = Template.bind({});
 notAuth.args = {};
 notAuth.decorators = [StoreDecorator({
-    user: { authData: null}
+    user: { authData: {}}
 })];
 
 export const Dark = Template.bind({});

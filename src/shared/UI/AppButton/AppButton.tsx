@@ -11,7 +11,7 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const AppButton: React.FC<AppButtonProps> = memo((props) => {
-    const { className, children, theme, disabled, ...otherProps } = props;
+    const { className, children, theme = 'white', disabled, ...otherProps } = props;
 
     return (
         <button 

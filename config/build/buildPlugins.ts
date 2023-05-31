@@ -4,6 +4,7 @@ import { BuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 export function buildPlugins({ paths, isDev, analyze, apiUrl }: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
@@ -19,7 +20,7 @@ export function buildPlugins({ paths, isDev, analyze, apiUrl }: BuildOptions): w
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl)
         }),
-        ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
+        ...(isDev ? [new ReactRefreshWebpackPlugin(), new ForkTsCheckerWebpackPlugin()] : []),
         new BundleAnalyzerPlugin({
             analyzerMode: analyze ? 'server' : 'disabled'
         })

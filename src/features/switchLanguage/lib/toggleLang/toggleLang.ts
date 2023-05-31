@@ -8,5 +8,7 @@ export const toggleLang = (lang: string): langType => {
         return 'it';
     case 'it':
         return 'ru';
+    default:
+        return 'ru';
     }
 };
