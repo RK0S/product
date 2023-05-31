@@ -30,5 +30,14 @@
             "password": "1234"
         }
     ],
-    "profile": { "name": "typicode" }
+    "profile": {
+        "first": "Роман",
+        "lastname": "Косолапов",
+        "age": 22,
+        "currency": "RUB",
+        "country": "Russia",
+        "city": "Moscow",
+        "username": "romashka",
+        "avatar": "https://cs9.pikabu.ru/post_img/big/2020/04/09/7/1586427027168847532.jpg"
+    }
 }

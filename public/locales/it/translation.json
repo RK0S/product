@@ -1,11 +1,12 @@
 {
-  "Main page": "Pagina principale",
-  "Language": "Italiano",
-  "Something went wrong": "Si è verificato un errore di sistema",
-  "Reload page": "Ricarica pagina",
-  "Main": "Home",
-  "About": "Chi siamo",
-  "Language-short": "IT",
-  "Log in": "Login",
-  "Log out": "Esci"
+    "Main page": "Pagina principale",
+    "Language": "Italiano",
+    "Something went wrong": "Si è verificato un errore di sistema",
+    "Reload page": "Ricarica pagina",
+    "Main": "Home",
+    "About": "Chi siamo",
+    "Profile": "Profilo",
+    "Language-short": "IT",
+    "Log in": "Login",
+    "Log out": "Esci"
 }

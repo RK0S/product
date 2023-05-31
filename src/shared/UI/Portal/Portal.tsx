@@ -11,9 +11,9 @@ export const Portal: React.FC<PortalProps> = (props) => {
     const [container] = useState(() => document.createElement('div'));
 
     useEffect(() => {
-        document.querySelector('.app').appendChild(container);
+        document.querySelector('.app')?.appendChild(container);
         return () => {
-            document.querySelector('.app').removeChild(container);
+            document.querySelector('.app')?.removeChild(container);
         };
     }, [container]);
 

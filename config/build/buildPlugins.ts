@@ -4,8 +4,9 @@ import { BuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-export function buildPlugins({ paths, isDev, analyze }: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev, analyze, apiUrl }: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HTMLWebpackPlugin({
             template: paths.html
@@ -16,9 +17,10 @@ export function buildPlugins({ paths, isDev, analyze }: BuildOptions): webpack.W
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: isDev
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl)
         }),
-        ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
+        ...(isDev ? [new ReactRefreshWebpackPlugin(), new ForkTsCheckerWebpackPlugin()] : []),
         new BundleAnalyzerPlugin({
             analyzerMode: analyze ? 'server' : 'disabled'
         })

@@ -3,14 +3,16 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { loginActions, loginReducer } from './../../model/slice/loginSlice';
 import { loginByUsername } from './../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/UI/Text/Text';
 import { getLoginState } from './../../model/selectors/getLoginState/getLoginState';
 import { ReducersList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import cls from './LoginForm.module.scss';
+
 
 export interface LoginFormProps {
     className?: string;
@@ -24,7 +26,7 @@ const LoginForm = (props: LoginFormProps) => {
     const { className } = props;
 
     const { t } = useTranslation('loginForm');
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { isLoading, password, username, error} = useSelector(getLoginState);
 
     useDynamicModuleLoader(initialReducers, true);

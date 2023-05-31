@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef } from 'react';
+import { ChangeEvent, InputHTMLAttributes, memo, RefObject, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from './AppInput.module.scss';
@@ -25,13 +25,13 @@ export const AppInput = memo((props: AppInputProps) => {
         ...otherProps
     } = props;
 
-    const ref = useRef<HTMLInputElement>(null);
+    const ref: RefObject<HTMLInputElement> | null = useRef(null);
     useEffect(() => {
         let timerId: ReturnType<typeof setTimeout>;
 
         if (autofocus) {
             timerId = setTimeout(() => {
-                ref.current.focus();
+                ref?.current?.focus();
             }, 0);
         }
 

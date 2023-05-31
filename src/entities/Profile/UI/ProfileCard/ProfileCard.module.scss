@@ -1,0 +1,28 @@
+.profileCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 28px;
+}
+
+.input_wrapper {
+    width: 220px;
+    margin-right: 16px;
+
+    p {
+        font: var(--font-s);
+        opacity: 0.7;
+        margin-bottom: 4px;
+    }
+}
+
+.personal_data {
+    display: flex;
+}
+
+.bottom {
+    display: flex;
+    justify-content: flex-end;
+}

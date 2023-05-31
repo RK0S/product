@@ -1,23 +1,25 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { LoginModal } from 'features/authByUsername';
 import { getUserAuthData, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import cls from './Navbar.module.scss';
+
 
 interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
     const authData = useSelector(getUserAuthData);
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onOpen = useCallback(() => {
         setIsOpened(true);
@@ -51,4 +53,4 @@ export const Navbar = ({ className }: NavbarProps) => {
             <LoginModal onClose={onClose} isOpened={isOpened} />
         </div>
     );
-};
+});
