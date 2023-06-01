@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema, ThunkConfig } from 'app/providers/StoreProvider';
 import { AsyncThunkAction } from '@reduxjs/toolkit';
 import axios, { AxiosStatic } from 'axios';
 
-type ActionCreatorType<Return, Arg, RejectedValue>
-    = (arg: Arg) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
+type ActionCreatorType<Return, Arg, T>
+    = (arg: Arg) => AsyncThunkAction<Return, Arg, ThunkConfig<T>>;
 
 jest.mock('axios');
 
 const mockedAxios = jest.mocked(axios, true);
 
-export class TestAsyncThunk<Return, Arg, RejectedValue> {
+export class TestAsyncThunk<Return, Arg, T> {
     dispatch: jest.MockedFn<any>;
 
     getState: () => StateSchema;
 
-    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
+    actionCreatorArg: ActionCreatorType<Return, Arg, T>;
 
     api: jest.MockedFunctionDeep<AxiosStatic>;
 
     navigate: jest.MockedFn<any>;
 
-    constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
-        this.actionCreator = actionCreator;
+    constructor(actionCreatorArg: ActionCreatorType<Return, Arg, T>) {
+        this.actionCreatorArg = actionCreatorArg;
         this.dispatch = jest.fn();
         this.getState = jest.fn();
 
@@ -31,13 +31,13 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     }
 
     async callThunk(arg: Arg) {
-        const action = this.actionCreator(arg);
-        const result = await action(
+        const actionCreator = this.actionCreatorArg(arg);
+        const action = await actionCreator(
             this.dispatch,
             this.getState,
             { api: this.api, navigate: this.navigate },
         );
 
-        return result;
+        return action;
     }
 }
