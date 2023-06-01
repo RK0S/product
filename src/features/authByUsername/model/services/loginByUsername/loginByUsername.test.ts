@@ -17,6 +17,17 @@ describe('loginByUsername.test', () => {
         expect(result.payload).toEqual(userValue);
     });
 
+    test('error login in condition', async () => {
+        const thunk = new TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockReturnValue(Promise.resolve({data: undefined}));
+        const result = await thunk.callThunk({ username: '123', password: '123' });
+
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(thunk.api.post).toHaveBeenCalled();
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toBe('error');
+    });
+
     test('error login', async () => {
         const thunk = new TestAsyncThunk(loginByUsername);
         thunk.api.post.mockReturnValue(Promise.reject());
