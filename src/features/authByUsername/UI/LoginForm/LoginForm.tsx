@@ -50,19 +50,21 @@ const LoginForm = (props: LoginFormProps) => {
     }, [dispatch, username, password]);
 
     return (
-        <div className={classNames(cls.loginForm, {}, [className])}>
+        <div data-testid='loginform' className={classNames(cls.loginForm, {}, [className])}>
             <AppInput
                 autofocus
                 placeholder={t('Username')}
                 className={cls.input}
                 onChange={onChangeUsername}
                 value={username}
+                data-testid='name'
             />
             <AppInput
                 placeholder={t('Password')}
                 className={cls.input}
                 onChange={onChangePassword}
                 value={password}
+                data-testid='password'
             />
             {error && (
                 <Text
@@ -76,6 +78,7 @@ const LoginForm = (props: LoginFormProps) => {
                 onClick={onLoginClick}
                 className={cls.btn}
                 theme={'filled'}
+                data-testid='fetching_btn'
             >
                 {t('Log in', { ns: 'translation'})}
             </AppButton>
