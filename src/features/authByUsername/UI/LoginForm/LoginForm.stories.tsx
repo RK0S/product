@@ -14,7 +14,7 @@ export default {
     }
 } as ComponentMeta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof LoginForm> = () => <LoginForm/>;
+const Template: ComponentStory<typeof LoginForm> = () => <LoginForm onSuccess={() => null} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

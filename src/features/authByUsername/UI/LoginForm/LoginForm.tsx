@@ -16,6 +16,7 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -23,7 +24,7 @@ const initialReducers: ReducersList = {
 };
 
 const LoginForm = (props: LoginFormProps) => {
-    const { className } = props;
+    const { className, onSuccess } = props;
 
     const { t } = useTranslation('loginForm');
     const dispatch = useAppDispatch();
@@ -45,9 +46,12 @@ const LoginForm = (props: LoginFormProps) => {
         [dispatch]
     );
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, username, password]);
+    const onLoginClick = useCallback( async () => {
+        const action = await dispatch(loginByUsername({ username, password }));
+        if (action.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, username, password, onSuccess]);
 
     return (
         <div data-testid='loginform' className={classNames(cls.loginForm, {}, [className])}>

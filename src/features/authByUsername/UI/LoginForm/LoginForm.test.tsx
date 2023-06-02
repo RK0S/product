@@ -8,12 +8,12 @@ import { loginByUsername } from './../../model/services/loginByUsername/loginByU
 
 describe('LoginForm', () => {
     test('render', () => {
-        componentRender(<LoginForm />);
+        componentRender(<LoginForm onSuccess={() => null} />);
         expect(screen.getByTestId('loginform')).toBeInTheDocument();
     });
 
     test('type in input', () => {
-        componentRender(<LoginForm />);
+        componentRender(<LoginForm onSuccess={() => null} />);
         const name = screen.getByTestId<HTMLInputElement>('name');
         const password = screen.getByTestId<HTMLInputElement>('password');
         userEvent.type(name, 'name');
@@ -23,7 +23,7 @@ describe('LoginForm', () => {
     });
 
     test('error fetching', async () => {
-        componentRender(<LoginForm />);
+        componentRender(<LoginForm onSuccess={() => null} />);
         const name = screen.getByTestId<HTMLInputElement>('name');
         const password = screen.getByTestId<HTMLInputElement>('password');
         const btn = screen.getByTestId<HTMLButtonElement>('fetching_btn');
@@ -35,4 +35,25 @@ describe('LoginForm', () => {
         expect(error).toBeInTheDocument();
     });
 
+    test('success fetching', async () => {
+        const userValue = { username: '123', id: '1' };
+        const { unmount } = componentRender(<LoginForm onSuccess={() => null} />);
+
+        const name = screen.getByTestId<HTMLInputElement>('name');
+        const password = screen.getByTestId<HTMLInputElement>('password');
+        const btn = screen.getByTestId<HTMLButtonElement>('fetching_btn');
+
+        userEvent.type(name, 'name');
+        userEvent.type(password, 'password');
+        userEvent.click(btn);
+
+        const thunk = new TestAsyncThunk(loginByUsername);
+        thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
+        const result = await thunk.callThunk({ username: 'name', password: 'password' });
+        if (result.meta.requestStatus === 'fulfilled') {
+            unmount();
+        }
+
+        expect(screen.queryByTestId('loginform')).not.toBeInTheDocument();
+    });
 });

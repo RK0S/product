@@ -30,7 +30,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }, []);
 
     const onLogout = useCallback(() => {
-        setIsOpened(false);
         localStorage.removeItem(USER_LOCALSTORAGE_KEY);
         dispatch(userActions.logout());
     }, [dispatch]);
