@@ -17,3 +17,7 @@
 .input::placeholder {
     color: var(--add-font-color);
 }
+
+.readonly:focus {
+    background: var(--input-color-default);
+}
