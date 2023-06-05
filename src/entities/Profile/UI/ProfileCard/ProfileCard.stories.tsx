@@ -4,8 +4,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-
+import AvatarImg from 'shared/assets/storybook/avatar.jpg';
+ 
 export default {
     title: 'entities/ProfileCard',
     component: ProfileCard,
@@ -14,30 +14,20 @@ export default {
     }
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = () => <ProfileCard/>;
+const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args}/>;
 
 export const Light = Template.bind({});
-Light.args = {};
-Light.decorators = [StoreDecorator({
-    profile: {
-        isLoading: false,
-        readonly: true,
-        data: {
-            first: 'name',
-            lastname: 'lastname',
-        }
+Light.args = {
+    data: {
+        avatar: AvatarImg
     }
-})];
+};
+
 
 export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    profile: {
-        isLoading: false,
-        readonly: true,
-        data: {
-            first: 'name',
-            lastname: 'lastname',
-        }
+Dark.args = {
+    data: {
+        avatar: AvatarImg
     }
-})];
+};
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

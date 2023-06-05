@@ -83,6 +83,20 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
         [dispatch]
     );
 
+    const onChangeAvatar = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfileForm({ avatar: value || '' }));
+        },
+        [dispatch]
+    );
+
+    const onChangeUsername = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfileForm({ username: value || '' }));
+        },
+        [dispatch]
+    );
+
     if (isLoading) {
         return (
             <div className={classNames(cls.editableProfileCard, {}, [className, cls.isLoading])}>
@@ -113,6 +127,8 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                 onChangeCity={onChangeCity}
                 readonly={readonly}
                 data={formData}
+                onChangeAvatar={onChangeAvatar}
+                onChangeUsername={onChangeUsername}
             />
             <div className={cls.bottom}>
                 {readonly ? (

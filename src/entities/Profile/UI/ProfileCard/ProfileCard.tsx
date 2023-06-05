@@ -4,6 +4,7 @@ import { Text } from 'shared/UI/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { AppInput } from 'shared/UI/AppInput/AppInput';
 import { Profile } from './../../model/types/profile';
+import { Avatar } from 'shared/UI/Avatar/Avatar';
 
 interface ProfileCardProps {
     className?: string;
@@ -13,6 +14,8 @@ interface ProfileCardProps {
     onChangeLastname?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
     onChangeCity?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -23,7 +26,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeFirstname,
         onChangeLastname,
         onChangeAge,
-        onChangeCity
+        onChangeCity,
+        onChangeAvatar,
+        onChangeUsername
     } = props;
 
     const { t } = useTranslation('profile');
@@ -31,43 +36,78 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={classNames(cls.profileCard, {}, [className])}>
             <Text className={cls.title} title={t('Profile', { ns: 'translation' })} />
-            <div className={cls.personal_data}>
-                <Text className={cls.title} text={t('Personal data')} />
+            <div className={cls.main_info}>
+                <div className={cls.avatar_wrapper}>
+                    <Avatar src={data?.avatar} alt='Avatar' variant='profile' />
+                </div>
+                <div className={cls.data}>
+                    <Text className={cls.subtitle} text={t('Personal data')} />
+                    <div className={cls.row}>
+                        <div className={cls.input_wrapper}>
+                            <Text className={cls.descr} text={t('Name')} />
+                            <AppInput
+                                onChange={onChangeFirstname}
+                                readonly={readonly}
+                                value={data?.first}
+                            />
+                        </div>
+                        <div className={cls.input_wrapper}>
+                            <Text className={cls.descr} text={t('Surname')} />
+                            <AppInput
+                                onChange={onChangeLastname}
+                                readonly={readonly}
+                                value={data?.lastname}
+                            />
+                        </div>
+                    </div>
+                    <div className={cls.row}>
+                        <div className={cls.input_wrapper}>
+                            <Text className={cls.descr} text={t('Age')} />
+                            <AppInput
+                                size='small'
+                                onChange={onChangeAge}
+                                readonly={readonly}
+                                value={data?.age}
+                            />
+                        </div>
+                        <div className={cls.input_wrapper}>
+                            <Text className={cls.descr} text={t('City')} />
+                            <AppInput
+                                onChange={onChangeCity}
+                                readonly={readonly}
+                                value={data?.city}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cls.data}>
+                <Text className={cls.subtitle} text={t('User settings')} />
                 <div className={cls.row}>
                     <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Name')} />
+                        <Text className={cls.descr} text={t('Username', {ns: 'translation'})} />
                         <AppInput
-                            onChange={onChangeFirstname}
+                            onChange={onChangeUsername}
                             readonly={readonly}
-                            value={data?.first}
+                            value={data?.username}
                         />
                     </div>
                     <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Surname')} />
+                        <Text className={cls.descr} text={t('Link to the avatar')} />
                         <AppInput
-                            onChange={onChangeLastname}
+                            onChange={onChangeAvatar}
                             readonly={readonly}
-                            value={data?.lastname}
+                            value={data?.avatar}
                         />
                     </div>
                 </div>
                 <div className={cls.row}>
                     <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Age')} />
-                        <AppInput
-                            size='small'
-                            onChange={onChangeAge}
-                            readonly={readonly}
-                            value={data?.age}
-                        />
-                    </div>
-                    <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('City')} />
+                        <Text className={cls.descr} text={t('Currency')} />
                         <AppInput onChange={onChangeCity} readonly={readonly} value={data?.city} />
                     </div>
                 </div>
             </div>
-            <Text text={t('User settings')} />
         </div>
     );
 };

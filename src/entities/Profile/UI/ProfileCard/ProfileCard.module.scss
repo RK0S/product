@@ -15,13 +15,22 @@
     }
 }
 
-.personal_data {
+.avatar_wrapper {
+    margin-right: 20px;
+}
+
+.subtitle {
+    margin-bottom: 20px;
+}
+
+.main_info {
+    display: flex;
+    margin-bottom: 23px;
+}
+
+.data {
     display: flex;
     flex-direction: column;
-
-    .title {
-        margin-bottom: 20px;
-    }
 
     .row {
         display: flex;
