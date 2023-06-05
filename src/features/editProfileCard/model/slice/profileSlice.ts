@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { ProfileSchema, Profile } from 'entities/Profile';
+import { updateProfileData } from './../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
     isLoading: false,
@@ -16,9 +17,13 @@ export const profileSlice = createSlice({
         setReadonly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
-        updateProfileData: (state, action: PayloadAction<Profile>) => {
-            state.data = {
-                ...state.data,
+        cancelEdit: (state) => {
+            state.readonly = true;
+            state.form = state.data;
+        },
+        updateProfileForm: (state, action: PayloadAction<Profile>) => {
+            state.form = {
+                ...state.form,
                 ...action.payload
             };
         }
@@ -32,10 +37,25 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false;
                 state.data = action.payload;
+                state.form = action.payload;
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(updateProfileData.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
+                state.isLoading = false;
+                state.data = action.payload;
+                state.readonly = true;
+            })
+            .addCase(updateProfileData.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+                state.readonly = true;
             });
     }
 });

@@ -39,7 +39,7 @@ module.exports = {
         'no-console': ['warn'],
         'i18next/no-literal-string': [
             'warn',
-            { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill', 'theme', 'textAlign'] }
+            { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'fill', 'theme', 'textAlign', 'size'] }
         ],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',

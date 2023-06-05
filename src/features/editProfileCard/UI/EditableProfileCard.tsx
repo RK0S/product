@@ -8,13 +8,15 @@ import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { Loader } from 'shared/UI/Loader/Loader';
 import { Text } from 'shared/UI/Text/Text';
-import { getProfileData } from '../model/selectors/getProfileData/getProfileData';
+import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
 import cls from './EditableProfileCard.module.scss';
+import { updateProfileData } from './../model/services/updateProfileData/updateProfileData';
+import { getProfileData } from '../model/selectors/getProfileData/getProfileData';
 
 interface EditProfileCardProps {
     className?: string;
@@ -29,7 +31,7 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     useDynamicModuleLoader(initialReducers, true);
 
     const { t } = useTranslation('profile');
-    const data = useSelector(getProfileData);
+    const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
@@ -45,19 +47,38 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     }, [dispatch]);
 
     const onCancel = useCallback(() => {
-        dispatch(profileActions.setReadonly(true));
+        dispatch(profileActions.cancelEdit());
+    }, [dispatch]);
+
+    const onSave = useCallback(() => {
+        dispatch(updateProfileData());
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileData({ first: value || '' }));
+            dispatch(profileActions.updateProfileForm({ first: value || '' }));
         },
         [dispatch]
     );
 
     const onChangeLastname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileData({ lastname: value || '' }));
+            dispatch(profileActions.updateProfileForm({ lastname: value || '' }));
+        },
+        [dispatch]
+    );
+
+    const onChangeAge = useCallback(
+        (value?: string) => {
+            const validateValue = value?.replace(/\D+/gm, '');
+            dispatch(profileActions.updateProfileForm({ age: Number(validateValue) || 0 }));
+        },
+        [dispatch]
+    );
+
+    const onChangeCity = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfileForm({ city: value || '' }));
         },
         [dispatch]
     );
@@ -84,12 +105,14 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     }
 
     return (
-        <div className={classNames(cls.editableProfileCard, {}, [className])}>
+        <>
             <ProfileCard
                 onChangeFirstname={onChangeFirstname}
                 onChangeLastname={onChangeLastname}
+                onChangeAge={onChangeAge}
+                onChangeCity={onChangeCity}
                 readonly={readonly}
-                data={data}
+                data={formData}
             />
             <div className={cls.bottom}>
                 {readonly ? (
@@ -98,13 +121,15 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                     </AppButton>
                 ) : (
                     <>
-                        <AppButton className={cls.edit_btn} onClick={onCancel} theme='outlined'>
+                        <AppButton className={cls.cancel_btn} onClick={onCancel} theme='outlined'>
                             {t('Cancel')}
                         </AppButton>
-                        <AppButton theme='filled'>{t('Save')}</AppButton>
+                        <AppButton theme='filled' onClick={onSave}>
+                            {t('Save')}
+                        </AppButton>
                     </>
                 )}
             </div>
-        </div>
+        </>
     );
 };

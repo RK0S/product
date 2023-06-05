@@ -8,9 +8,6 @@
 }
 
 .input_wrapper {
-    width: 220px;
-    margin-right: 16px;
-
     p {
         font: var(--font-s);
         opacity: 0.7;
@@ -20,4 +17,18 @@
 
 .personal_data {
     display: flex;
+    flex-direction: column;
+
+    .title {
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        gap: 16px;
+    }
+
+    .row:not(:last-child) {
+        margin-bottom: 16px;
+    }
 }
