@@ -31,8 +31,8 @@
     }
   ],
   "profile": {
-    "first": "Роман",
-    "lastname": "Косолапов",
+    "name": "Роман",
+    "surname": "Косолапов",
     "age": 22,
     "currency": "RUB",
     "country": "Russia",

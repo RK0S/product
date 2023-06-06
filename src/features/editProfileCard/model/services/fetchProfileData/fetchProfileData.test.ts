@@ -3,10 +3,10 @@ import { fetchProfileData } from './fetchProfileData';
 
 describe('fetchProfileData.test', () => {
     test('success response', async () => {
-        const mockValue = { first: '123', last: '123'};
+        const mockValue = { name: '123', last: '123' };
         const thunk = new TestAsyncThunk(fetchProfileData);
 
-        thunk.api.get.mockReturnValue(Promise.resolve({data: mockValue}));
+        thunk.api.get.mockReturnValue(Promise.resolve({ data: mockValue }));
         const result = await thunk.callThunk();
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);

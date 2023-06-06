@@ -19,6 +19,8 @@ import { updateProfileData } from './../model/services/updateProfileData/updateP
 import { CurrencySelect } from 'entities/Currency';
 import { Currency, Country } from 'shared/const/common';
 import { CountrySelect } from 'entities/Country';
+import { getProfileValidateErrors } from '../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { useMapValidateErrorsTranslation } from './../lib/hooks/useMapValidateErrorsTranslation/useMapValidateErrorsTranslation';
 
 interface EditProfileCardProps {
     className?: string;
@@ -37,8 +39,11 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErros = useSelector(getProfileValidateErrors);
 
     const dispatch = useAppDispatch();
+
+    const errorsTranslations = useMapValidateErrorsTranslation();
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -56,16 +61,16 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
         dispatch(updateProfileData());
     }, [dispatch]);
 
-    const onChangeFirstname = useCallback(
+    const onChangeNamename = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileForm({ first: value || '' }));
+            dispatch(profileActions.updateProfileForm({ name: value || '' }));
         },
         [dispatch]
     );
 
-    const onChangeLastname = useCallback(
+    const onChangeSurname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileForm({ lastname: value || '' }));
+            dispatch(profileActions.updateProfileForm({ surname: value || '' }));
         },
         [dispatch]
     );
@@ -137,8 +142,8 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     return (
         <>
             <ProfileCard
-                onChangeFirstname={onChangeFirstname}
-                onChangeLastname={onChangeLastname}
+                onChangeNamename={onChangeNamename}
+                onChangeSurname={onChangeSurname}
                 onChangeAge={onChangeAge}
                 onChangeCity={onChangeCity}
                 readonly={readonly}
@@ -148,9 +153,21 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
             />
             <div className={cls.bottom}>
                 <div className={cls.selects}>
-                    <CurrencySelect value={formData?.currency} onChange={onChangeCurrency} readonly={readonly} />
-                    <CountrySelect value={formData?.country} onChange={onChangeCountry} readonly={readonly} />
+                    <CurrencySelect
+                        value={formData?.currency}
+                        onChange={onChangeCurrency}
+                        readonly={readonly}
+                    />
+                    <CountrySelect
+                        value={formData?.country}
+                        onChange={onChangeCountry}
+                        readonly={readonly}
+                    />
                 </div>
+                {validateErros?.length &&
+                validateErros.map((err) => (
+                    <Text key={err} theme='error' text={errorsTranslations[err]} />
+                ))}
                 {readonly ? (
                     <AppButton onClick={onEdit} theme='filled'>
                         {t('Edit')}

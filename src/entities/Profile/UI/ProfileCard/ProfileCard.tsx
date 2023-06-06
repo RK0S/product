@@ -10,8 +10,8 @@ interface ProfileCardProps {
     className?: string;
     data?: Profile;
     readonly?: boolean;
-    onChangeFirstname?: (value?: string) => void;
-    onChangeLastname?: (value?: string) => void;
+    onChangeNamename?: (value?: string) => void;
+    onChangeSurname?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
     onChangeCity?: (value?: string) => void;
     onChangeAvatar?: (value?: string) => void;
@@ -23,8 +23,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         className,
         data,
         readonly,
-        onChangeFirstname,
-        onChangeLastname,
+        onChangeNamename,
+        onChangeSurname,
         onChangeAge,
         onChangeCity,
         onChangeAvatar,
@@ -46,17 +46,17 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         <div className={cls.input_wrapper}>
                             <Text className={cls.descr} text={t('Name')} />
                             <AppInput
-                                onChange={onChangeFirstname}
+                                onChange={onChangeNamename}
                                 readonly={readonly}
-                                value={data?.first}
+                                value={data?.name}
                             />
                         </div>
                         <div className={cls.input_wrapper}>
                             <Text className={cls.descr} text={t('Surname')} />
                             <AppInput
-                                onChange={onChangeLastname}
+                                onChange={onChangeSurname}
                                 readonly={readonly}
-                                value={data?.lastname}
+                                value={data?.surname}
                             />
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <Text className={cls.subtitle} text={t('User settings')} />
                 <div className={cls.row}>
                     <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Username', {ns: 'translation'})} />
+                        <Text className={cls.descr} text={t('Username', { ns: 'translation' })} />
                         <AppInput
                             onChange={onChangeUsername}
                             readonly={readonly}

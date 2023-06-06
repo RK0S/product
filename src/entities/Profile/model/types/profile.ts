@@ -1,8 +1,21 @@
 import { Currency, Country } from 'shared/const/common';
 
+export const ValidateProfileErrors = {
+    INCORRECT_NAME_OR_SURNAME: 'INCORRECT_NAME_OR_SURNAME',
+    INCORRECT_AGE: 'INCORRECT_AGE',
+    INCORRECT_NAME_CITY: 'INCORRECT_NAME_CITY',
+    INCORRECT_LINK_FOR_AVATAR: 'INCORRECT_LINK_FOR_AVATAR',
+    INCORRECT_USERNAME: 'INCORRECT_USERNAME',
+    NO_DATA: 'NO_DATA',
+    SERVER_ERROR: 'SERVER_ERROR',
+} as const;
+
+export type ValidateProfileErrorsType =
+    typeof ValidateProfileErrors[keyof typeof ValidateProfileErrors];
+
 export interface Profile {
-    first?: string;
-    lastname?: string;
+    name?: string;
+    surname?: string;
     age?: number;
     currency?: Currency;
     country?: Country;
@@ -17,4 +30,5 @@ export interface ProfileSchema {
     isLoading: boolean;
     error?: string;
     readonly: boolean;
+    validateErrors?: ValidateProfileErrorsType[];
 }
