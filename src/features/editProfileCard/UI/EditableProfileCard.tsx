@@ -46,7 +46,9 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     const errorsTranslations = useMapValidateErrorsTranslation();
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onEdit = useCallback(() => {
@@ -164,10 +166,12 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                         readonly={readonly}
                     />
                 </div>
-                {validateErros?.length &&
-                validateErros.map((err) => (
-                    <Text key={err} theme='error' text={errorsTranslations[err]} />
-                ))}
+                <div>
+                    {validateErros?.length &&
+                        validateErros.map((err) => (
+                            <Text key={err} theme='error' text={errorsTranslations[err]} />
+                        ))}
+                </div>
                 {readonly ? (
                     <AppButton onClick={onEdit} theme='filled'>
                         {t('Edit')}

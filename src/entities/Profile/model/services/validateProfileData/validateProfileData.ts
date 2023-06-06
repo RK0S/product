@@ -20,13 +20,11 @@ export const validateProfileData = (profile?: Profile): ValidateProfileErrorsTyp
         errors.push(ValidateProfileErrors.INCORRECT_NAME_CITY);
     }
 
-    // eslint-disable-next-line no-useless-escape
-    const validateLink = new RegExp('https?://\S+(?:jpg|jpeg|png|svg|webp)');
-    if (avatar && validateLink.test(avatar)) {
+    if (!avatar) {
         errors.push(ValidateProfileErrors.INCORRECT_LINK_FOR_AVATAR);
     }
 
-    if (username && username.length > 15) {
+    if (username && username.length > 20) {
         errors.push(ValidateProfileErrors.INCORRECT_USERNAME);
     }
 

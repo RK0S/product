@@ -19,15 +19,28 @@ const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...
 export const Light = Template.bind({});
 Light.args = {
     data: {
-        avatar: AvatarImg
+        avatar: AvatarImg,
+        age: 19,
+        city: 'Moscow',
+        country: 'Armenia',
+        currency: 'USD',
+        name: 'Kid',
+        surname: 'VS cat',
+        username: '<3 cat'
     }
 };
-
 
 export const Dark = Template.bind({});
 Dark.args = {
     data: {
-        avatar: AvatarImg
+        avatar: AvatarImg,
+        age: 19,
+        city: 'Moscow',
+        country: 'Armenia',
+        currency: 'USD',
+        name: 'Kid',
+        surname: 'VS cat',
+        username: '<3 cat'
     }
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
