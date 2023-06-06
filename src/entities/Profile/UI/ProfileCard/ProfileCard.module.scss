@@ -8,9 +8,6 @@
 }
 
 .input_wrapper {
-    width: 220px;
-    margin-right: 16px;
-
     p {
         font: var(--font-s);
         opacity: 0.7;
@@ -18,11 +15,29 @@
     }
 }
 
-.personal_data {
-    display: flex;
+.avatar_wrapper {
+    margin-right: 20px;
 }
 
-.bottom {
+.subtitle {
+    margin-bottom: 20px;
+}
+
+.main_info {
     display: flex;
-    justify-content: flex-end;
+    margin-bottom: 23px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        display: flex;
+        gap: 16px;
+    }
+
+    .row:not(:last-child) {
+        margin-bottom: 16px;
+    }
 }

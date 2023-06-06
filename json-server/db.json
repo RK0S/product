@@ -1,43 +1,43 @@
 {
-    "posts": [
-        {
-            "id": "1",
-            "title": "json-server",
-            "userId": "1"
-        },
-        {
-            "id": "2",
-            "title": "json-server",
-            "userId": "2"
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "body": "some comment",
-            "postId": "1"
-        }
-    ],
-    "users": [
-        {
-            "id": "1",
-            "username": "malina",
-            "password": "123"
-        },
-        {
-            "id": "2",
-            "username": "romashka",
-            "password": "1234"
-        }
-    ],
-    "profile": {
-        "first": "Роман",
-        "lastname": "Косолапов",
-        "age": 22,
-        "currency": "RUB",
-        "country": "Russia",
-        "city": "Moscow",
-        "username": "romashka",
-        "avatar": "https://cs9.pikabu.ru/post_img/big/2020/04/09/7/1586427027168847532.jpg"
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "malina",
+      "password": "123"
+    },
+    {
+      "id": "2",
+      "username": "romashka",
+      "password": "1234"
+    }
+  ],
+  "profile": {
+    "name": "Роман",
+    "surname": "Косолапов",
+    "age": 18,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "romashka",
+    "avatar": "https://i.ytimg.com/vi/fsvTC-PONB8/hqdefault.jpg"
+  }
 }

@@ -1,4 +1,4 @@
-import { ProfileCard } from 'entities/Profile';
+import { EditableProfileCard } from 'features/editProfileCard';
 
 
 
@@ -6,7 +6,7 @@ const ProfilePage = () => {
 
     return (
         <div>
-            <ProfileCard />
+            <EditableProfileCard />
         </div>
     );
 };

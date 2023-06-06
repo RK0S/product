@@ -1,0 +1,22 @@
+.isLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.selects {
+    display: flex;
+    gap: 16px;
+}
+
+.cancel_btn {
+    margin-right: 10px;
+}

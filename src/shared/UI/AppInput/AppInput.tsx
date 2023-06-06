@@ -3,15 +3,19 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from './AppInput.module.scss';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly' | 'size'>;
+
+type Size = 'default' | 'small'
 
 interface AppInputProps extends HtmlInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     placeholder?: string;
     type?: string;
     autofocus?: boolean;
+    readonly?: boolean;
+    size?: Size;
 }
 
 export const AppInput = memo((props: AppInputProps) => {
@@ -22,6 +26,8 @@ export const AppInput = memo((props: AppInputProps) => {
         placeholder,
         type = 'text',
         autofocus,
+        readonly,
+        size = 'default',
         ...otherProps
     } = props;
 
@@ -51,7 +57,8 @@ export const AppInput = memo((props: AppInputProps) => {
             placeholder={placeholder}
             value={value}
             onChange={onChangeHandler}
-            className={classNames(cls.input, {}, [className])}
+            className={classNames(cls.input, {[cls.readonly]: readonly}, [className, cls[size]])}
+            readOnly={readonly}
             {...otherProps}
         />
     );

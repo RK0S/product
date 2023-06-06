@@ -28,6 +28,27 @@ Error.args = {
     theme: 'error'
 };
 
+export const Left = Template.bind({});
+Left.args = {
+    title: 'Title',
+    text: 'Text',
+    textAlign: 'left'
+};
+
+export const Right = Template.bind({});
+Right.args = {
+    title: 'Title',
+    text: 'Text',
+    textAlign: 'right'
+};
+
+export const Center = Template.bind({});
+Center.args = {
+    title: 'Title',
+    text: 'Text',
+    textAlign: 'center'
+};
+
 export const DarkError = Template.bind({});
 DarkError.args = {
     title: 'Title',

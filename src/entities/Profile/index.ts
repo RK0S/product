@@ -1,4 +1,4 @@
-export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
-export type { ProfileSchema, Profile } from './model/types/profile';
-export { profileActions, profileReducer } from './model/slice/profileSlice';
+export type { ProfileSchema, Profile, ValidateProfileErrorsType } from './model/types/profile';
+export  { ValidateProfileErrors } from './model/types/profile';
 export { ProfileCard } from './UI/ProfileCard/ProfileCard';
+export { validateProfileData } from './model/services/validateProfileData/validateProfileData';
