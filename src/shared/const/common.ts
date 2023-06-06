@@ -1,12 +1,12 @@
-const Currency = {
+export const CurrencyList = {
     RUB: 'RUB',
     EUR: 'EUR',
     USD: 'USD',
 } as const;
 
-export type Currency = typeof Currency[keyof typeof Currency];
+export type Currency = typeof CurrencyList[keyof typeof CurrencyList];
 
-const Country = {
+export const CountryList = {
     Russia: 'Russia',
     Belarus: 'Belarus',
     Ukraine: 'Ukraine',
@@ -15,4 +15,4 @@ const Country = {
     Italy: 'Italy',
 } as const;
 
-export type Country = typeof Country[keyof typeof Country];
+export type Country = typeof CountryList[keyof typeof CountryList];

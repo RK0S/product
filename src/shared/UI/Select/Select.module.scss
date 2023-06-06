@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    opacity: 0.7;
+    font: var(--font-s);
+    margin-bottom: 4px;
+}
+
+.select {
+    background-color: var(--input-color-default);
+    padding: 5px 6px;
+    border: 1px solid var(--main-font-color);
+    border-radius: 6px 6px 0 0;
+    color: var(--main-font-color);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.select:focus {
+    background-color: var(--input-color-focused);
+}
+
+.option {
+    background-color: var(--input-color-default);
+}

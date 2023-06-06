@@ -16,7 +16,9 @@ import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfil
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
 import cls from './EditableProfileCard.module.scss';
 import { updateProfileData } from './../model/services/updateProfileData/updateProfileData';
-import { getProfileData } from '../model/selectors/getProfileData/getProfileData';
+import { CurrencySelect } from 'entities/Currency';
+import { Currency, Country } from 'shared/const/common';
+import { CountrySelect } from 'entities/Country';
 
 interface EditProfileCardProps {
     className?: string;
@@ -97,6 +99,20 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
         [dispatch]
     );
 
+    const onChangeCurrency = useCallback(
+        (currency: Currency) => {
+            dispatch(profileActions.updateProfileForm({ currency }));
+        },
+        [dispatch]
+    );
+
+    const onChangeCountry = useCallback(
+        (country: Country) => {
+            dispatch(profileActions.updateProfileForm({ country }));
+        },
+        [dispatch]
+    );
+
     if (isLoading) {
         return (
             <div className={classNames(cls.editableProfileCard, {}, [className, cls.isLoading])}>
@@ -131,19 +147,23 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                 onChangeUsername={onChangeUsername}
             />
             <div className={cls.bottom}>
+                <div className={cls.selects}>
+                    <CurrencySelect value={formData?.currency} onChange={onChangeCurrency} readonly={readonly} />
+                    <CountrySelect value={formData?.country} onChange={onChangeCountry} readonly={readonly} />
+                </div>
                 {readonly ? (
                     <AppButton onClick={onEdit} theme='filled'>
                         {t('Edit')}
                     </AppButton>
                 ) : (
-                    <>
+                    <div>
                         <AppButton className={cls.cancel_btn} onClick={onCancel} theme='outlined'>
                             {t('Cancel')}
                         </AppButton>
                         <AppButton theme='filled' onClick={onSave}>
                             {t('Save')}
                         </AppButton>
-                    </>
+                    </div>
                 )}
             </div>
         </>

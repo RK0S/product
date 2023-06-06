@@ -7,7 +7,14 @@
 
 .bottom {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.selects {
+    display: flex;
+    gap: 16px;
 }
 
 .cancel_btn {

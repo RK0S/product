@@ -101,12 +101,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         />
                     </div>
                 </div>
-                <div className={cls.row}>
-                    <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Currency')} />
-                        <AppInput onChange={onChangeCity} readonly={readonly} value={data?.city} />
-                    </div>
-                </div>
             </div>
         </div>
     );
