@@ -2,5 +2,20 @@
   "Profile page": "Pagina del profilo",
   "Edit": "Modificare",
   "Name": "Nome",
-  "Surname": "Cognome"
+  "Surname": "Cognome",
+  "Personal data": "Dati personali",
+  "Age": "Età",
+  "City": "Città",
+  "User settings": "Impostazioni utente",
+  "Link to the avatar": "Collegamento all'avatar",
+  "Cancel": "Annullare",
+  "Save": "Salvare",
+  "Incorrect age value": "Valore dell'età errato",
+  "Invalid avatar link": "Collegamento all'avatar non valido",
+  "No data available": "Nessun dato disponibile",
+  "Invalid username": "Nome utente non valido",
+  "Incorrect name or surname": "Nome o cognome errato",
+  "Incorrect name city": "Nome città errato",
+  "Server error": "Errore del server",
+  "Username": "Nome utente"
 }
