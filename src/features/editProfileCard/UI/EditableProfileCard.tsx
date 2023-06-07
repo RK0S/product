@@ -63,16 +63,18 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
         dispatch(updateProfileData());
     }, [dispatch]);
 
-    const onChangeNamename = useCallback(
+    const onChangeName = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileForm({ name: value || '' }));
+            const validateValue = value?.replace(/\d+/gm, '');
+            dispatch(profileActions.updateProfileForm({ name: validateValue || '' }));
         },
         [dispatch]
     );
 
     const onChangeSurname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.updateProfileForm({ surname: value || '' }));
+            const validateValue = value?.replace(/\d+/gm, '');
+            dispatch(profileActions.updateProfileForm({ surname: validateValue || '' }));
         },
         [dispatch]
     );
@@ -144,7 +146,7 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     return (
         <>
             <ProfileCard
-                onChangeNamename={onChangeNamename}
+                onChangeName={onChangeName}
                 onChangeSurname={onChangeSurname}
                 onChangeAge={onChangeAge}
                 onChangeCity={onChangeCity}

@@ -10,7 +10,7 @@ interface ProfileCardProps {
     className?: string;
     data?: Profile;
     readonly?: boolean;
-    onChangeNamename?: (value?: string) => void;
+    onChangeName?: (value?: string) => void;
     onChangeSurname?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
     onChangeCity?: (value?: string) => void;
@@ -23,7 +23,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         className,
         data,
         readonly,
-        onChangeNamename,
+        onChangeName,
         onChangeSurname,
         onChangeAge,
         onChangeCity,
@@ -46,7 +46,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         <div className={cls.input_wrapper}>
                             <Text className={cls.descr} text={t('Name')} />
                             <AppInput
-                                onChange={onChangeNamename}
+                                onChange={onChangeName}
                                 readonly={readonly}
                                 value={data?.name}
                             />
