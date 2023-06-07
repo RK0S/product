@@ -85,7 +85,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <Text className={cls.subtitle} text={t('User settings')} />
                 <div className={cls.row}>
                     <div className={cls.input_wrapper}>
-                        <Text className={cls.descr} text={t('Username', { ns: 'translation' })} />
+                        <Text className={cls.descr} text={t('Username')} />
                         <AppInput
                             onChange={onChangeUsername}
                             readonly={readonly}

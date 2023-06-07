@@ -1,15 +1,16 @@
-import {createContext} from 'react';
+import { createContext } from 'react';
 
 export const Theme = {
     LIGHT: 'app_light_theme',
-    DARK: 'app_dark_theme'
+    DARK: 'app_dark_theme',
+    SWAMP: 'app_swamp_theme'
 } as const;
 
 export type ThemeType = typeof Theme[keyof typeof Theme];
 
 export interface ThemeContextProps {
     theme?: ThemeType;
-    setTheme?: (theme: ThemeType) => void
+    setTheme?: (theme: ThemeType) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({});

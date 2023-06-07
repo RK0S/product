@@ -2,5 +2,20 @@
   "Profile page": "Страница пользователя",
   "Edit": "Редактировать",
   "Name": "Имя",
-  "Surname": "Фамилия"
+  "Surname": "Фамилия",
+  "Personal data": "Личные данные",
+  "Age": "Возраст",
+  "City": "Город",
+  "User settings": "Настройки пользователя",
+  "Link to the avatar": " Ссылка на аватар",
+  "Cancel": "Отменить",
+  "Save": "Сохранить",
+  "Incorrect age value": "Некорректный возраст",
+  "Invalid avatar link": "Некорректная ссылка на аватар",
+  "Incorrect name city": "Некорректное название города",
+  "Incorrect name or surname": "Некорректное имя или фамилия",
+  "Invalid username": "Недопустимое имя пользователя",
+  "No data available": "Нет доступных данных",
+  "Server error": "Ошибка сервера",
+  "Username": "Имя пользователя"
 }

@@ -2,5 +2,20 @@
   "Profile page": "Profile page",
   "Edit": "Edit",
   "Name": "Name",
-  "Surname": "Surname"
+  "Surname": "Surname",
+  "Personal data": "Personal data",
+  "Age": "Age",
+  "City": "City",
+  "User settings": "User settings",
+  "Link to the avatar": "Link to the avatar",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Incorrect age value": "Incorrect age value",
+  "Invalid avatar link": "Invalid avatar link",
+  "Incorrect name city": "Incorrect name city",
+  "Incorrect name or surname": "Incorrect name or surname",
+  "Invalid username": "Invalid username",
+  "No data available": "No data available",
+  "Server error": "Server error",
+  "Username": "Username"
 }

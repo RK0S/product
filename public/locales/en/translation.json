@@ -1,12 +1,14 @@
 {
-    "Main page": "Main page",
-    "Language": "English",
-    "Something went wrong": "Something went wrong",
-    "Reload page": "Reload page",
-    "Main": "Main",
-    "About": "About",
-    "Profile": "Profile",
-    "Language-short": "EN",
-    "Log in": "Log in",
-    "Log out": "Log out"
+  "Main page": "Main page",
+  "Language": "English",
+  "Something went wrong": "Something went wrong",
+  "Reload page": "Reload page",
+  "Main": "Main",
+  "About": "About",
+  "Profile": "Profile",
+  "Language-short": "EN",
+  "Log in": "Log in",
+  "Log out": "Log out",
+  "Country": "Country",
+  "Currency": "Currency"
 }
