@@ -37,6 +37,12 @@ Dark.args = {
 };
 Dark.decorators= [ThemeDecorator(Theme.DARK)];
 
+export const Swamp = Template.bind({});
+Swamp.args = {
+    placeholder: 'Text'
+};
+Swamp.decorators= [ThemeDecorator(Theme.SWAMP)];
+
 export const DarkWithValue = Template.bind({});
 DarkWithValue.args = {
     value: 'Text'

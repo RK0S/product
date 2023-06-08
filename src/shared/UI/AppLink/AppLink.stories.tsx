@@ -28,3 +28,9 @@ Dark.args = {
     children: 'Link'
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const Swamp = Template.bind({});
+Swamp.args = {
+    children: 'Link'
+};
+Swamp.decorators = [ThemeDecorator(Theme.SWAMP)];

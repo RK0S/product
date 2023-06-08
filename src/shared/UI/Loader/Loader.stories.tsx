@@ -21,3 +21,7 @@ Light.args = {};
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const Swamp = Template.bind({});
+Swamp.args = {};
+Swamp.decorators = [ThemeDecorator(Theme.SWAMP)];

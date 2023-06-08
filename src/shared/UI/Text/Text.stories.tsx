@@ -85,3 +85,10 @@ DarkOnlyText.args = {
     text: 'Text'
 };
 DarkOnlyText.decorators= [ThemeDecorator(Theme.DARK)];
+
+export const SwampBoth = Template.bind({});
+SwampBoth.args = {
+    title: 'Title',
+    text: 'Text'
+};
+SwampBoth.decorators= [ThemeDecorator(Theme.SWAMP)];
