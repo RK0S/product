@@ -23,7 +23,7 @@
 
 **Тестирование**:
 - Unit: [*Jest*](https://jestjs.io/)
-- Скриншотное: [*Loki*](https://loki.js.org/)
+- Скриншотное: [*Storybook*](https://storybook.js.org) + [*Loki*](https://loki.js.org/)
 - Интеграционное: [*React-testing-library*](https://testing-library.com/docs/react-testing-library/intro/)
 - E2E: [*Cypress*](https://www.cypress.io/)
 
