@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent';
 
 export default {
-    title: 'shared/ArticleCodeBlockComponent',
+    title: 'entities/ArticleCodeBlockComponent',
     component: ArticleCodeBlockComponent,
     argTypes: {
         backgroundColor: { control: 'color' }
