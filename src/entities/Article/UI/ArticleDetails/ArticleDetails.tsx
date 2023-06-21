@@ -9,6 +9,7 @@ import { fetchArticleById } from './../../model/services/fetchArticleById.ts/fet
 import { useSelector } from 'react-redux';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from './../../model/selectors/articleDetails';
 import { Text } from 'shared/UI/Text/Text';
+import { Skeleton } from 'shared/UI/Skeleton/Skeleton';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -37,7 +38,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = (
-            <div>Loading...</div>
+            <>
+                <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+            </>
         );
     } else if (error) {
         content = (
