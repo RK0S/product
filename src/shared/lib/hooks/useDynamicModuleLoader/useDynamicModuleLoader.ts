@@ -9,7 +9,7 @@ export type ReducersList = {
 };
 
 
-export const useDynamicModuleLoader = (reducers: ReducersList, removeAfterUnmount?: boolean) => {
+export const useDynamicModuleLoader = (reducers: ReducersList, removeAfterUnmount = true) => {
     const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
@@ -31,6 +31,5 @@ export const useDynamicModuleLoader = (reducers: ReducersList, removeAfterUnmoun
                     });
             }
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch, reducers, store.reducerManager, removeAfterUnmount]);
 };

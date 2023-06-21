@@ -32,7 +32,7 @@ const initialReducers = {
 
 export const EditableProfileCard = (props: EditProfileCardProps) => {
     const { className } = props;
-    useDynamicModuleLoader(initialReducers, true);
+    useDynamicModuleLoader(initialReducers);
 
     const { t } = useTranslation('profile');
     const formData = useSelector(getProfileForm);
