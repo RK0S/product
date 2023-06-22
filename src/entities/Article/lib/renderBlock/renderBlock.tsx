@@ -10,6 +10,7 @@ export const renderBlock = (block: ArticleBlock, className: string) => {
         case ArticleBlockType.CODE:
             return (
                 <ArticleCodeBlockComponent
+                    block={block}
                     key={block.id}
                     className={className}
                 />
@@ -17,6 +18,7 @@ export const renderBlock = (block: ArticleBlock, className: string) => {
         case ArticleBlockType.IMAGE:
             return (
                 <ArticleImageBlockComponent
+                    block={block}
                     key={block.id}
                     className={className}
                 />
@@ -24,6 +26,7 @@ export const renderBlock = (block: ArticleBlock, className: string) => {
         case ArticleBlockType.TEXT:
             return (
                 <ArticleTextBlockComponent
+                    block={block}
                     key={block.id}
                     className={className}
                 />

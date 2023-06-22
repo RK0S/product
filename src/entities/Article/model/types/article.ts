@@ -20,15 +20,18 @@ export interface ArticleBlockBase {
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
+    type: typeof ArticleBlockType.IMAGE
     src: string;
     title: string;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
+    type: typeof ArticleBlockType.CODE
     code: string;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
+    type: typeof ArticleBlockType.TEXT
     paragraphs: string[];
     title?: string;
 }
