@@ -17,7 +17,7 @@ import { renderBlock } from './../../lib/renderBlock/renderBlock';
 
 interface ArticleDetailsProps {
     className?: string;
-    id: string;
+    id?: string;
 }
 
 const reducers: ReducersList = {
@@ -25,7 +25,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-    const { className, id } = props;
+    const { className, id = '1' } = props;
     const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -35,7 +35,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     useDynamicModuleLoader(reducers);
 
     useEffect(() => {
-        dispatch(fetchArticleById(id));
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchArticleById(id));
+        }
     }, [dispatch, id]);
 
     let content;
