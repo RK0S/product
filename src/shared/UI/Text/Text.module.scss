@@ -27,3 +27,13 @@
 .center {
     text-align: center;
 }
+
+.large {
+    .title {
+        font: var(--font-xl);
+    }
+
+    .text {
+        font: var(--font-l);
+    }
+}

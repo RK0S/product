@@ -30,7 +30,7 @@ const LoginForm = (props: LoginFormProps) => {
     const dispatch = useAppDispatch();
     const { isLoading, password, username, error} = useSelector(getLoginState);
 
-    useDynamicModuleLoader(initialReducers, true);
+    useDynamicModuleLoader(initialReducers);
 
     const onChangeUsername = useCallback(
         (value: string) => {

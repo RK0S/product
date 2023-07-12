@@ -21,6 +21,13 @@ Both.args = {
     text: 'Text'
 };
 
+export const Large = Template.bind({});
+Large.args = {
+    title: 'Title',
+    text: 'Text',
+    size: 'large'
+};
+
 export const Error = Template.bind({});
 Error.args = {
     title: 'Title',

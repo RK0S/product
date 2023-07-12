@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import { memo } from 'react';
 
-type Variant = 'comment' | 'profile' | 'corner'
+type Variant = 'comment' | 'profile' | 'corner' | 'article'
 
 interface AvatarProps {
     className?: string;
