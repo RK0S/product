@@ -8,7 +8,8 @@ const data = {
     city: 'Moscow',
     name: 'Kid',
     surname: 'VS cat',
-    username: '<3 cat'
+    username: '<3 cat',
+    id: '1'
 };
 
 describe('updateProfileData.test', () => {
