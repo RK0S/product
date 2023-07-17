@@ -14,6 +14,7 @@ export type ValidateProfileErrorsType =
     typeof ValidateProfileErrors[keyof typeof ValidateProfileErrors];
 
 export interface Profile {
+    id?: string;
     name?: string;
     surname?: string;
     age?: number;

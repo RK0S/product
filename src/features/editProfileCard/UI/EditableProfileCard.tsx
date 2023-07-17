@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import {
+    useDynamicModuleLoader,
+    ReducersList
+} from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { AppButton } from 'shared/UI/AppButton/AppButton';
 import { Loader } from 'shared/UI/Loader/Loader';
 import { Text } from 'shared/UI/Text/Text';
@@ -21,19 +24,23 @@ import { Currency, Country } from 'shared/const/common';
 import { CountrySelect } from 'entities/Country';
 import { getProfileValidateErrors } from '../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { useMapValidateErrorsTranslation } from './../lib/hooks/useMapValidateErrorsTranslation/useMapValidateErrorsTranslation';
+import { useInitialEffect } from './../../../shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { redirect, useParams } from 'react-router-dom';
+import { getUserAuthData } from 'entities/User';
+import { getProfileData } from './../model/selectors/getProfileData/getProfileData';
 
 interface EditProfileCardProps {
     className?: string;
 }
 
-const initialReducers = {
+const initialReducers: ReducersList = {
     profile: profileReducer
 };
 
 export const EditableProfileCard = (props: EditProfileCardProps) => {
     const { className } = props;
     useDynamicModuleLoader(initialReducers);
-
+    const { id } = useParams<{ id: string }>();
     const { t } = useTranslation('profile');
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
@@ -42,14 +49,19 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
     const validateErros = useSelector(getProfileValidateErrors);
 
     const dispatch = useAppDispatch();
-
     const errorsTranslations = useMapValidateErrorsTranslation();
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    const authData = useSelector(getUserAuthData);
+    const profileData = useSelector(getProfileData);
+    const canEdit = authData?.id === profileData?.id;
+
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
+        } else {
+            redirect('/profile/1');
         }
-    }, [dispatch]);
+    });
 
     const onEdit = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
@@ -174,19 +186,27 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                             <Text key={err} theme='error' text={errorsTranslations[err]} />
                         ))}
                 </div>
-                {readonly ? (
-                    <AppButton onClick={onEdit} theme='filled'>
-                        {t('Edit')}
-                    </AppButton>
-                ) : (
-                    <div>
-                        <AppButton className={cls.cancel_btn} onClick={onCancel} theme='outlined'>
-                            {t('Cancel')}
-                        </AppButton>
-                        <AppButton theme='filled' onClick={onSave}>
-                            {t('Save')}
-                        </AppButton>
-                    </div>
+                {canEdit && (
+                    <>
+                        {readonly ? (
+                            <AppButton onClick={onEdit} theme='filled'>
+                                {t('Edit')}
+                            </AppButton>
+                        ) : (
+                            <div>
+                                <AppButton
+                                    className={cls.cancel_btn}
+                                    onClick={onCancel}
+                                    theme='outlined'
+                                >
+                                    {t('Cancel')}
+                                </AppButton>
+                                <AppButton theme='filled' onClick={onSave}>
+                                    {t('Save')}
+                                </AppButton>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </>

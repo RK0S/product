@@ -1,8 +1,9 @@
 import { getUserAuthData } from 'entities/User';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { AppLink } from 'shared/UI/AppLink/AppLink';
-import { SidebarItemType } from './../../model/item';
+import { SidebarItemType } from './../../model/types/sidebar';
 
 import cls from './SidebarItem.module.scss';
 
@@ -11,7 +12,7 @@ interface SidebarItemProps {
     collapsed: boolean
 }
 
-export const SidebarItem = (props: SidebarItemProps) => {
+export const SidebarItem = memo((props: SidebarItemProps) => {
     const { item, collapsed } = props;
     const { t } = useTranslation();
 
@@ -27,4 +28,4 @@ export const SidebarItem = (props: SidebarItemProps) => {
             {Boolean(!collapsed) && <span>{t(item.text)}</span>}
         </AppLink>
     );
-};
+});

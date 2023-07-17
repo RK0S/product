@@ -4,7 +4,7 @@ import { Profile, validateProfileData, ValidateProfileErrors, ValidateProfileErr
 import { getProfileForm } from './../../selectors/getProfileForm/getProfileForm';
 
 export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileErrorsType[]>>(
-    'editProfileCard/updateProfileData',
+    'editableProfileCard/updateProfileData',
     async (_, thunkApi) => {
         const { extra, rejectWithValue, getState} = thunkApi;
 
@@ -17,7 +17,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
         }
 
         try {
-            const response = await extra.api.put<Profile>('/profile', formData);
+            const response = await extra.api.put<Profile>(`/profile/${formData?.id}`, formData);
 
             return response.data;
         } catch (e) {

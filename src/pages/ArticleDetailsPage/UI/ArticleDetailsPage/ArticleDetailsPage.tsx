@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -15,13 +15,15 @@ import { getArticleCommentsIsLoading } from './../../model/selectors/comments';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchCommentsByArticleId } from './../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddNewComment } from 'features/addNewComment';
+import { addCommentForArticle } from './../../model/services/addCommentForAtricle/addCommentForArticle';
 
 const initialReducers: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer
 };
 
 const ArticleDetailsPage = () => {
-    const { id }= useParams<{id: string}>();
+    const { id = '1' }= useParams<{id: string}>();
     const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
@@ -32,6 +34,11 @@ const ArticleDetailsPage = () => {
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
+
+    const onSendComment = useCallback((value: string) => {
+        dispatch(addCommentForArticle(value));
+    }, [dispatch]);
+
     if (!id && __PROJECT__ !== 'storybook') {
         return (
             <div className={classNames('', {}, [])}>
@@ -44,6 +51,7 @@ const ArticleDetailsPage = () => {
         <div className={classNames('', {}, [])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentTitle} title={t('Comments')} />
+            <AddNewComment onSendComment={onSendComment} />
             <CommentList isLoading={isLoading} comments={comments} />
         </div>
     );
