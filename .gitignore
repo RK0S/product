@@ -1,6 +1,4 @@
 /build
 node_modules
 .idea
-.vscode
 /storybook-static
-.fttemplates

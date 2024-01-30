@@ -1,3 +1,10 @@
+import { User } from 'entities/User';
+
+export enum ArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL'
+}
+
 export const ArticleType = {
     IT: 'IT',
     SCIENCE: 'Science',
@@ -20,18 +27,18 @@ export interface ArticleBlockBase {
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-    type: typeof ArticleBlockType.IMAGE
+    type: typeof ArticleBlockType.IMAGE;
     src: string;
     title: string;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-    type: typeof ArticleBlockType.CODE
+    type: typeof ArticleBlockType.CODE;
     code: string;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-    type: typeof ArticleBlockType.TEXT
+    type: typeof ArticleBlockType.TEXT;
     paragraphs: string[];
     title?: string;
 }
@@ -47,4 +54,5 @@ export interface Article {
     createdAt: string;
     type: TArticleType[];
     blocks: ArticleBlock[];
+    user: User;
 }
