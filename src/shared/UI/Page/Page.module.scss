@@ -1,0 +1,6 @@
+.Page {
+    grid-area: content;
+    padding: 20px 80px;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+}

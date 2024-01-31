@@ -17,6 +17,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchCommentsByArticleId } from './../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { AddNewComment } from 'features/addNewComment';
 import { addCommentForArticle } from './../../model/services/addCommentForAtricle/addCommentForArticle';
+import { Page } from 'shared/UI/Page/Page';
 
 const initialReducers: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer
@@ -41,19 +42,19 @@ const ArticleDetailsPage = () => {
 
     if (!id && __PROJECT__ !== 'storybook') {
         return (
-            <div className={classNames('', {}, [])}>
+            <Page className={classNames('', {}, [])}>
                 {t('Article was not found')}
-            </div>
+            </Page>
         );
     }
 
     return (
-        <div className={classNames('', {}, [])}>
+        <Page className={classNames('', {}, [])}>
             <ArticleDetails id={id} />
             <Text className={cls.commentTitle} title={t('Comments')} />
             <AddNewComment onSendComment={onSendComment} />
             <CommentList isLoading={isLoading} comments={comments} />
-        </div>
+        </Page>
     );
 }; 
 

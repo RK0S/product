@@ -1,10 +1,11 @@
 import { EditableProfileCard } from 'features/editProfileCard';
+import { Page } from 'shared/UI/Page/Page';
 
 const ProfilePage = () => {
     return (
-        <div>
+        <Page>
             <EditableProfileCard />
-        </div>
+        </Page>
     );
 };
 
