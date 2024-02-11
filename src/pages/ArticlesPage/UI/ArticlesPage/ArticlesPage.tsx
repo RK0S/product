@@ -23,6 +23,8 @@ import {
 import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArticlesPageProps {
     className?: string;
@@ -53,8 +55,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
+    const [searchParams] = useSearchParams();
+
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     return (
@@ -62,8 +66,8 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             onScrollEnd={!isLoading ? onLoadNextPart : undefined}
             className={classNames(cls.ArticlesPage, {}, [className])}
         >
-            <ArticleViewSelector view={view} onViewClick={onChangeView} />
-            <ArticleList isLoading={isLoading} view={view} articles={articles} />
+            <ArticlesPageFilters />
+            <ArticleList className={cls.list} isLoading={isLoading} view={view} articles={articles} />
         </Page>
     );
 };

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/UI/Select/Select';
+import { Select, SelectOption } from 'shared/UI/Select/Select';
 import { Country, CountryList } from 'shared/const/common';
 import { memo, useMemo, useCallback } from 'react';
 
@@ -15,8 +15,8 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
     const { className, value, onChange, readonly } = props;
     const { t } = useTranslation();
 
-    const countryOptions = useMemo(
-        () => Object.entries(CountryList).map((val) => ({ value: val[0], content: val[1] })),
+    const countryOptions = useMemo<SelectOption<Country>[]>(
+        () => Object.entries(CountryList).map((val) => ({ value: val[1], content: val[0] })),
         []
     );
 

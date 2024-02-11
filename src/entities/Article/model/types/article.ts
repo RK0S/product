@@ -1,5 +1,11 @@
 import { User } from 'entities/User';
 
+export enum ArticleSortField {
+    VIEWS = 'views',
+    TITLE = 'title',
+    CREATED = 'created'
+}
+
 export enum ArticleView {
     BIG = 'BIG',
     SMALL = 'SMALL'
@@ -7,11 +13,13 @@ export enum ArticleView {
 
 export const ArticleType = {
     IT: 'IT',
-    SCIENCE: 'Science',
-    KNITTING: 'Knitting'
+    SCIENCE: 'SCIENCE',
+    KNITTING: 'KNITTING',
+    ALL: 'ALL',
+    ECONOMICS: 'ECONOMICS'
 } as const;
 
-export type TArticleType = typeof ArticleType[keyof typeof ArticleType];
+export type TArticleType = keyof typeof ArticleType;
 
 export const ArticleBlockType = {
     TEXT: 'TEXT',
@@ -19,7 +27,7 @@ export const ArticleBlockType = {
     IMAGE: 'IMAGE'
 } as const;
 
-export type TArticleBlockType = typeof ArticleBlockType[keyof typeof ArticleBlockType];
+export type TArticleBlockType = keyof typeof ArticleBlockType;
 
 export interface ArticleBlockBase {
     id: string;
