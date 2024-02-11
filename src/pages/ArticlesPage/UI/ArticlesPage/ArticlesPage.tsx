@@ -17,11 +17,12 @@ import {
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
-    getArticlesPageView
+    getArticlesPageView,
+    getArticlesPageInited
 } from '../../model/selectors/articlesPageSelectors';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { Page } from 'shared/UI/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlesPageProps {
     className?: string;
@@ -39,7 +40,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
 
-    useDynamicModuleLoader(reducers);
+    useDynamicModuleLoader(reducers, false);
 
     const onChangeView = useCallback(
         (view: ArticleView) => {
@@ -53,10 +54,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1
-        }));
+        dispatch(initArticlesPage());
     });
 
     return (
