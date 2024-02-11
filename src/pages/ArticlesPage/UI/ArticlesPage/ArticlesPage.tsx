@@ -20,7 +20,7 @@ import {
     getArticlesPageView,
     getArticlesPageInited
 } from '../../model/selectors/articlesPageSelectors';
-import { Page } from 'shared/UI/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
@@ -58,7 +58,10 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     });
 
     return (
-        <Page onScrollEnd={!isLoading ? onLoadNextPart : undefined} className={classNames(cls.ArticlesPage, {}, [className])}>
+        <Page
+            onScrollEnd={!isLoading ? onLoadNextPart : undefined}
+            className={classNames(cls.ArticlesPage, {}, [className])}
+        >
             <ArticleViewSelector view={view} onViewClick={onChangeView} />
             <ArticleList isLoading={isLoading} view={view} articles={articles} />
         </Page>

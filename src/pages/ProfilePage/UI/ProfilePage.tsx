@@ -1,5 +1,5 @@
 import { EditableProfileCard } from 'features/editProfileCard';
-import { Page } from 'shared/UI/Page/Page';
+import { Page } from 'widgets/Page/Page';
 
 const ProfilePage = () => {
     return (

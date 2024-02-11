@@ -7,7 +7,10 @@ import { Text } from 'shared/UI/Text/Text';
 import { CommentList } from 'entities/Comment';
 
 import cls from './ArticleDetailsPage.module.scss';
-import { ReducersList, useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import {
+    ReducersList,
+    useDynamicModuleLoader
+} from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { articleDetailsCommentsReducer } from '../../model/slices/articleDetailsCommentsSlice';
 import { useSelector } from 'react-redux';
 import { getArticleComments } from './../../model/slices/articleDetailsCommentsSlice';
@@ -17,14 +20,14 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchCommentsByArticleId } from './../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { AddNewComment } from 'features/addNewComment';
 import { addCommentForArticle } from './../../model/services/addCommentForAtricle/addCommentForArticle';
-import { Page } from 'shared/UI/Page/Page';
+import { Page } from 'widgets/Page/Page';
 
 const initialReducers: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer
 };
 
 const ArticleDetailsPage = () => {
-    const { id = '1' }= useParams<{id: string}>();
+    const { id = '1' } = useParams<{ id: string }>();
     const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
@@ -36,16 +39,15 @@ const ArticleDetailsPage = () => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    const onSendComment = useCallback((value: string) => {
-        dispatch(addCommentForArticle(value));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (value: string) => {
+            dispatch(addCommentForArticle(value));
+        },
+        [dispatch]
+    );
 
     if (!id && __PROJECT__ !== 'storybook') {
-        return (
-            <Page className={classNames('', {}, [])}>
-                {t('Article was not found')}
-            </Page>
-        );
+        return <Page className={classNames('', {}, [])}>{t('Article was not found')}</Page>;
     }
 
     return (
@@ -56,6 +58,6 @@ const ArticleDetailsPage = () => {
             <CommentList isLoading={isLoading} comments={comments} />
         </Page>
     );
-}; 
+};
 
 export default memo(ArticleDetailsPage);
