@@ -5,7 +5,7 @@ import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { AddNewCommentSchema } from 'features/addNewComment';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { UISchema } from 'features/UI';
@@ -15,10 +15,10 @@ export interface StateSchema {
     ui: UISchema;
 
     //Асинхронные редюсеры
+    articleDetailsPage?: ArticleDetailsPageSchema;
     profile?: ProfileSchema;
     loginForm?: LoginSchema;
     articleDetails?: ArticleDetailsSchema;
-    articleDetailsComments?: ArticleDetailsCommentsSchema;
     addCommentForm?: AddNewCommentSchema;
     articlesPage?: ArticlesPageSchema;
 }

@@ -27,3 +27,18 @@
     overflow-y: auto;
     height: calc(100vh - 60px);
 }
+
+*::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--bg-color);        /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--add-font-color);    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 2px solid var(--main-font-color);  /* padding вокруг плашки */
+}

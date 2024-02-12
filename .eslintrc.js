@@ -48,7 +48,8 @@ module.exports = {
                     'textAlign',
                     'size',
                     'alt',
-                    'variant'
+                    'variant',
+                    'target'
                 ]
             }
         ],
