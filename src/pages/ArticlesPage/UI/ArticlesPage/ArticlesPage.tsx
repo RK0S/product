@@ -18,7 +18,6 @@ import {
     getArticlesPageError,
     getArticlesPageIsLoading,
     getArticlesPageView,
-    getArticlesPageInited
 } from '../../model/selectors/articlesPageSelectors';
 import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
@@ -67,7 +66,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             className={classNames(cls.ArticlesPage, {}, [className])}
         >
             <ArticlesPageFilters />
-            <ArticleList className={cls.list} isLoading={isLoading} view={view} articles={articles} />
+            <ArticleList
+                className={cls.list}
+                isLoading={isLoading}
+                view={view}
+                articles={articles}
+            />
         </Page>
     );
 };

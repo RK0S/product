@@ -24,6 +24,7 @@ import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleRecommendations } from './../../model/slices/articleDetailsPageRecommendationsSlice';
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
 import { fetchArticleRecommendations } from './../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 const initialReducers: ReducersList = {
     articleDetailsPage: articleDetailsPageReducer
@@ -58,6 +59,7 @@ const ArticleDetailsPage = () => {
 
     return (
         <Page className={classNames('', {}, [])}>
+            <ArticleDetailsPageHeader />
             <ArticleDetails id={id} />
             <ArticleList
                 articles={recommendations}

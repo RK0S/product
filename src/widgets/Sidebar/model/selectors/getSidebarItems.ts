@@ -34,6 +34,12 @@ export const getSidebarItems = createSelector(
                 text: 'Articles',
                 Icon: Articles,
                 authOnly: true
+            },
+            {
+                path: RoutePath.article_create,
+                text: 'Create article',
+                Icon: Articles,
+                authOnly: true
             },);
         }
         return SidebarItemList;
