@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Portal } from 'shared/UI/Portal/Portal';
+import { Portal } from '../Portal/Portal';
 import { useMount } from 'shared/lib/hooks/useMount/useMount';
 
 import cls from './Modal.module.scss';

@@ -14,7 +14,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module'
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'rk0s-fsd'],
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
@@ -57,7 +57,8 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'warn',
         'react/display-name': 'off',
         'linebreak-style': 0,
-        'indent': ['error', 4, { SwitchCase: 1 }]
+        'indent': ['error', 4, { SwitchCase: 1 }],
+        'rk0s-fsd/path-checker': 'error'
     },
     globals: {
         __IS_DEV__: true,
