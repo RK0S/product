@@ -28,6 +28,7 @@ import { useInitialEffect } from './../../../shared/lib/hooks/useInitialEffect/u
 import { redirect, useParams } from 'react-router-dom';
 import { getUserAuthData } from 'entities/User';
 import { getProfileData } from './../model/selectors/getProfileData/getProfileData';
+import { HStack } from 'shared/UI/Stack';
 
 interface EditProfileCardProps {
     className?: string;
@@ -136,9 +137,9 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.editableProfileCard, {}, [className, cls.isLoading])}>
+            <HStack justify='center' className={classNames(cls.editableProfileCard, {}, [className, cls.isLoading])}>
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
@@ -167,8 +168,8 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                 onChangeAvatar={onChangeAvatar}
                 onChangeUsername={onChangeUsername}
             />
-            <div className={cls.bottom}>
-                <div className={cls.selects}>
+            <HStack justify='between' className={cls.bottom}>
+                <HStack gap='16'>
                     <CurrencySelect
                         value={formData?.currency}
                         onChange={onChangeCurrency}
@@ -179,7 +180,7 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                         onChange={onChangeCountry}
                         readonly={readonly}
                     />
-                </div>
+                </HStack>
                 <div>
                     {validateErros?.length &&
                         validateErros.map((err) => (
@@ -208,7 +209,7 @@ export const EditableProfileCard = (props: EditProfileCardProps) => {
                         )}
                     </>
                 )}
-            </div>
+            </HStack>
         </>
     );
 };

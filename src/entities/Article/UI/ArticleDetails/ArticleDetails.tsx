@@ -14,6 +14,7 @@ import { Avatar } from 'shared/UI/Avatar/Avatar';
 import { Icon } from 'shared/UI/Icon/Icon';
 import Views from 'shared/assets/icons/views.svg';
 import { renderBlock } from './../../lib/renderBlock/renderBlock';
+import { HStack } from 'shared/UI/Stack';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -59,17 +60,17 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
-                <div className={cls.avatarWrapper}>
+                <HStack max justify='center'>
                     <Avatar className={cls.avatar} src={article?.img} alt='avatar' variant='article' />
-                </div>
+                </HStack>
                 <Text size='large' className={cls.title} title={article?.title} text={article?.subtitle} />
-                <div className={cls.articleInfo}>
+                <HStack>
                     <Icon Svg={Views} className={cls.icon} />
                     <Text text={String(article?.views)}/>
-                </div>
-                <div className={cls.articleInfo}>
+                </HStack>
+                <HStack>
                     <Text text={article?.createdAt}/>
-                </div>
+                </HStack>
                 {article?.blocks.map(block => renderBlock(block, cls.block))}
             </>
         );

@@ -49,7 +49,11 @@ module.exports = {
                     'size',
                     'alt',
                     'variant',
-                    'target'
+                    'target',
+                    'justify',
+                    'gap',
+                    'align',
+                    'direction'
                 ]
             }
         ],
