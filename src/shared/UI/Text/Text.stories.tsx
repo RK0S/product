@@ -1,101 +1,78 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeDecorator } from '../../config/storybook/ThemeDecorator/ThemeDecorator';
 import { Text } from './Text';
+import { Theme } from 'app/providers/ThemeProvider';
 
 export default {
     title: 'shared/Text',
     component: Text,
     argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+        backgroundColor: { control: 'color' },
+    },
 } as ComponentMeta<typeof Text>;
 
-const Template: ComponentStory<typeof Text> = args => <Text {...args} />;
+const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const Both = Template.bind({});
-Both.args = {
-    title: 'Title',
-    text: 'Text'
-};
-
-export const Large = Template.bind({});
-Large.args = {
-    title: 'Title',
-    text: 'Text',
-    size: 'large'
+export const Primary = Template.bind({});
+Primary.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-    title: 'Title',
-    text: 'Text',
-    theme: 'error'
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    theme: 'error',
 };
 
-export const Left = Template.bind({});
-Left.args = {
-    title: 'Title',
-    text: 'Text',
-    textAlign: 'left'
+export const onlyTitle = Template.bind({});
+onlyTitle.args = {
+    title: 'Title lorem ipsun',
 };
 
-export const Right = Template.bind({});
-Right.args = {
-    title: 'Title',
-    text: 'Text',
-    textAlign: 'right'
+export const onlyText = Template.bind({});
+onlyText.args = {
+    text: 'Description Description Description Description',
 };
 
-export const Center = Template.bind({});
-Center.args = {
-    title: 'Title',
-    text: 'Text',
-    textAlign: 'center'
+export const PrimaryDark = Template.bind({});
+PrimaryDark.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+};
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const onlyTitleDark = Template.bind({});
+onlyTitleDark.args = {
+    title: 'Title lorem ipsun',
+};
+onlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const onlyTextDark = Template.bind({});
+onlyTextDark.args = {
+    text: 'Description Description Description Description',
+};
+onlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const SizeL = Template.bind({});
+SizeL.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    size: 'size_l',
 };
 
-export const DarkError = Template.bind({});
-DarkError.args = {
-    title: 'Title',
-    text: 'Text',
-    theme: 'error'
-};
-DarkError.decorators= [ThemeDecorator(Theme.DARK)];
-
-export const OnlyTitle = Template.bind({});
-OnlyTitle.args = {
-    title: 'Title',
+export const SizeM = Template.bind({});
+SizeM.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    size: 'size_m',
 };
 
-export const OnlyText = Template.bind({});
-OnlyText.args = {
-    text: 'Text'
+export const SizeS = Template.bind({});
+SizeS.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    size: 'size_s',
 };
-
-export const DarkBoth = Template.bind({});
-DarkBoth.args = {
-    title: 'Title',
-    text: 'Text'
-};
-DarkBoth.decorators= [ThemeDecorator(Theme.DARK)];
-
-export const DarkOnlyTitle = Template.bind({});
-DarkOnlyTitle.args = {
-    title: 'Title',
-};
-DarkOnlyTitle.decorators= [ThemeDecorator(Theme.DARK)];
-
-export const DarkOnlyText = Template.bind({});
-DarkOnlyText.args = {
-    text: 'Text'
-};
-DarkOnlyText.decorators= [ThemeDecorator(Theme.DARK)];
-
-export const SwampBoth = Template.bind({});
-SwampBoth.args = {
-    title: 'Title',
-    text: 'Text'
-};
-SwampBoth.decorators= [ThemeDecorator(Theme.SWAMP)];

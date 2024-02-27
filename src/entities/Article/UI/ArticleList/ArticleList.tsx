@@ -29,7 +29,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     if (!isLoading && !articles.length) {
         return (
             <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-                <Text title='Статьи не найдены' size='large' />
+                <Text title='Статьи не найдены' size='size_l' />
             </div>
         );
     }

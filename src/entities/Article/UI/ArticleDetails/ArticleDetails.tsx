@@ -63,7 +63,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 <HStack max justify='center'>
                     <Avatar className={cls.avatar} src={article?.img} alt='avatar' variant='article' />
                 </HStack>
-                <Text size='large' className={cls.title} title={article?.title} text={article?.subtitle} />
+                <Text size='size_l' className={cls.title} title={article?.title} text={article?.subtitle} />
                 <HStack>
                     <Icon Svg={Views} className={cls.icon} />
                     <Text text={String(article?.views)}/>
